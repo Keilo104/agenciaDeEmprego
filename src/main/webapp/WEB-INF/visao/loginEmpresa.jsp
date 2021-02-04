@@ -15,6 +15,11 @@
 
 <body>
 <div class="container">
+    <c:if test="${not empty msg}">
+        <c:if test="${msg='sucesso'}">
+            <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>
+        </c:if>
+    </c:if>
     <div class="row mt-5">
         <div class="col-6">
             <h1>Faça Login</h1>

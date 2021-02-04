@@ -26,6 +26,6 @@ public class CadastroCandidatoControle {
     @RequestMapping(value = "cadastrarCandidato", method = RequestMethod.POST)
     public String cadastrar( Candidato candidato ) {
         repositorio.cadastrar( candidato );
-        return "redirect:loginCandidato";
+        return "redirect:loginCandidato?msg=sucesso";
     }
 }
