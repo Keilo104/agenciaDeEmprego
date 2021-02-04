@@ -2,7 +2,9 @@ package org.agenciaDeEmprego.controle;
 
 import javax.servlet.http.HttpSession;
 
+import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Usuario;
+import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class AutenticadorControle {
 
-	private UsuarioRepositorio repositorio;
+	private CandidatoRepositorio repositorioCandidato;
+
 
 	@Autowired //injeção de dependência
-	public AutenticadorControle(UsuarioRepositorio repositorio) {
+	public AutenticadorControle(CandidatoRepositorio repositorio) {
 		super();
-		this.repositorio = repositorio;
+		this.repositorioCandidato = repositorio;
 	}
 	
 	@RequestMapping("loginCandidato")
@@ -31,11 +34,11 @@ public class AutenticadorControle {
 		return "loginEmpresa";
 	}
 	
-	@RequestMapping(value = "autenticar", method = RequestMethod.POST)
-	public String autenticar(Usuario usuario, HttpSession sessao) {
-		if(repositorio.autenticar(usuario)) {
-			sessao.setAttribute("usuario", usuario);
-			if(usuario.getLogin().contains("admin")) {
+	@RequestMapping(value = "autenticarCandidato", method = RequestMethod.POST)
+	public String autenticar(Candidato candidato, HttpSession sessao) {
+		if(repositorioCandidato.autenticarCandidato(candidato)) {
+			sessao.setAttribute("usuario", candidato);
+			if(candidato.getLogin().contains("admin")) {
 				return "redirect:admin-pagina-inicial";
 			} else {
 				return "redirect:candidato-pagina-inicial";
