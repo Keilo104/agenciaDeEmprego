@@ -22,7 +22,7 @@ public class AutenticadorControle {
 	
 	@RequestMapping("loginCandidato")
 	public String loginCandidato() {
-		System.out.println("oi");
+		//System.out.println("oi");
 		return "loginCandidato";
 	}
 

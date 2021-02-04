@@ -1,5 +1,7 @@
 package org.agenciaDeEmprego.modelo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,6 +13,8 @@ public class Candidato extends Usuario {
 	private String cpf;
 
 	private String nome;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNasc;
 
 	private int codigoCS;
@@ -20,13 +24,6 @@ public class Candidato extends Usuario {
 	private List<Cargo> experiencia;
 
 	public Candidato() {
-	}
-
-	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc ) {
-		super( login, senha );
-		this.cpf = cpf;
-		this.nome = nome;
-		this.dataNasc = dataNasc;
 	}
 
 	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
