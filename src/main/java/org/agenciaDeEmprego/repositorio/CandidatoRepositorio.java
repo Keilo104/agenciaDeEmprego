@@ -29,14 +29,12 @@ public class CandidatoRepositorio {
 		}
 	}
 
-	public Candidato getCandidato(String cpf) {
-		Query query = manager.createQuery("select u from Candidato u where u.cpf = ?1");
-		query.setParameter(1, cpf);
+	public Candidato getCandidato(Candidato candidato) {
 		try {
-			return (Candidato) query.getSingleResult();
-		} catch (NoResultException e) {
+			return manager.find( Candidato.class, candidato );
+		} catch ( Exception e ) {
+			e.printStackTrace();
 			return null;
 		}
-	}	
-
+	}
 }

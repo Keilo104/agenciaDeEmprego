@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class EmpresaControle {
@@ -17,14 +20,15 @@ public class EmpresaControle {
     private OfertaRepositorio ofertaRepositorio;
 
     @Autowired
-    public EmpresaControle( EmpresaRepositorio repositorio ) {
+    public EmpresaControle( EmpresaRepositorio repositorio, OfertaRepositorio ofertaRepositorio ) {
         super();
         this.repositorio = repositorio;
+        this.ofertaRepositorio = ofertaRepositorio;
     }
 
     @RequestMapping("empresa-pagina-inicial")
-    public String inicioEmpresa( Empresa empresa, Model model ) {
-        model.addAttribute( "empresas", repositorio.getEmpresa( empresa.getId() ) );
+    public String inicioEmpresa( @SessionAttribute("empresa") Empresa empresa, Model model ) {
+        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas() );
         return "/empresa/PaginaEmpresa";
     }
 
@@ -33,7 +37,7 @@ public class EmpresaControle {
     public String cadastrarEmpresa( Empresa empresa, Model model) {
         repositorio.cadastrar( empresa );
         model.addAttribute("msg", "sucesso");
-        return "redirect:loginEmpresa";
+        return "LoginEmpresa";
     }
 
     @Transactional

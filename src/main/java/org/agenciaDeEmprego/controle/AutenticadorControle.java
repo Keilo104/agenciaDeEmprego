@@ -27,44 +27,41 @@ public class AutenticadorControle {
 	
 	@RequestMapping("loginCandidato")
 	public String loginCandidato() {
-		//System.out.println("oi");
-		return "loginCandidato";
+		return "LoginCandidato";
 	}
 
 	@RequestMapping("loginEmpresa")
 	public String loginEmpresa() {
-		return "loginEmpresa";
+		return "LoginEmpresa";
 	}
-	
+
 	@RequestMapping(value = "autenticarCandidato", method = RequestMethod.POST)
-	public String autenticar(Candidato candidato, HttpSession sessao) {
-		if(repositorioCandidato.autenticarCandidato(candidato)) {
-			sessao.setAttribute("usuario", candidato);
-			if(candidato.getLogin().equals("admin")) {
-				return "redirect:admin-pagina-inicial";
-			} else {
+	public String autenticar( Candidato candidato, HttpSession sessao ) {
+		if ( repositorioCandidato.autenticarCandidato( candidato ) ) {
+			sessao.setAttribute( "candidato", candidato );
+			if ( candidato instanceof Candidato ) {
 				return "redirect:candidato-pagina-inicial";
 			}
 		}
-		return "loginCandidato";
+		return "LoginCandidato";
 	}
 
 	@RequestMapping(value = "autenticarEmpresa", method = RequestMethod.POST)
-	public String autenticar(Empresa empresa, HttpSession sessao) {
-		if(repositorioEmpresa.autenticarEmpresa(empresa)) {
-			sessao.setAttribute("empresa", empresa);
-			if (empresa instanceof Empresa) {
+	public String autenticar( Empresa empresa, HttpSession sessao ) {
+		if ( repositorioEmpresa.autenticarEmpresa( empresa ) ) {
+			sessao.setAttribute( "empresa", empresa );
+			if ( empresa instanceof Empresa ) {
 				return "redirect:empresa-pagina-inicial";
 			}
 		}
-		return "loginEmpresa";
+		return "LoginEmpresa";
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession sessao) {
 		sessao.removeAttribute("usuario");
 		sessao.invalidate();
-		return "loginCandidato";
+		return "LoginCandidato";
 	}
 
 }
