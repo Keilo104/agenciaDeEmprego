@@ -2,6 +2,7 @@ package org.agenciaDeEmprego.controle;
 
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
+import org.agenciaDeEmprego.repositorio.OfertaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class EmpresaControle {
 
     private EmpresaRepositorio repositorio;
+    private OfertaRepositorio ofertaRepositorio;
 
     @Autowired
     public EmpresaControle( EmpresaRepositorio repositorio ) {
@@ -20,16 +22,10 @@ public class EmpresaControle {
         this.repositorio = repositorio;
     }
 
-    @RequestMapping("admin-pagina-inicial")
-    public String adminPagina( Model model ) {
-        model.addAttribute( "empresas", repositorio.getAll() );
-        return "admin";
-    }
-
-    @RequestMapping("candidato-pagina-inicial") // TODO
-    public String candidatoPagina( Model model ) {
-        model.addAttribute( "empresas", repositorio.getAll() );
-        return "admin";
+    @RequestMapping("empresa-pagina-inicial")
+    public String inicioEmpresa( Empresa empresa, Model model ) {
+        model.addAttribute( "empresas", repositorio.getEmpresa( empresa.getId() ) );
+        return "/empresa/PaginaEmpresa";
     }
 
     @Transactional

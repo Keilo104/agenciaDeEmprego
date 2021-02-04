@@ -1,16 +1,11 @@
 package org.agenciaDeEmprego.interceptor;
 
-import java.util.Hashtable;
+import org.agenciaDeEmprego.acesso.*;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.agenciaDeEmprego.acesso.Acesso;
-import org.agenciaDeEmprego.acesso.Admin;
-import org.agenciaDeEmprego.acesso.Candidato;
-import org.agenciaDeEmprego.acesso.Deslogado;
-import org.agenciaDeEmprego.acesso.Logado;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import java.util.Hashtable;
 
 public class AutorizadorInterceptor extends HandlerInterceptorAdapter {
 	

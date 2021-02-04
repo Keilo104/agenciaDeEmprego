@@ -1,7 +1,5 @@
 package org.agenciaDeEmprego.repositorio;
 
-
-import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
 

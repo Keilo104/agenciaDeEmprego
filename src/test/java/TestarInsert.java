@@ -1,9 +1,3 @@
-import org.agenciaDeEmprego.modelo.Usuario;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 public class TestarInsert {
 
     public static void main( String[] args ) {

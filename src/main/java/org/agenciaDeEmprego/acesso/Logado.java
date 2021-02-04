@@ -1,8 +1,8 @@
 package org.agenciaDeEmprego.acesso;
 
-import javax.servlet.http.HttpSession;
-
 import org.agenciaDeEmprego.modelo.Usuario;
+
+import javax.servlet.http.HttpSession;
 
 public class Logado implements Acesso {
 

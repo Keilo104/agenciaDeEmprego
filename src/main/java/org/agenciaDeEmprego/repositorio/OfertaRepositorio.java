@@ -1,12 +1,12 @@
 package org.agenciaDeEmprego.repositorio;
 
+import org.agenciaDeEmprego.modelo.Oferta;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.agenciaDeEmprego.modelo.Oferta;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class OfertaRepositorio {
@@ -27,4 +27,13 @@ public class OfertaRepositorio {
 		}
 	}
 
+	public Oferta buscarOfertas( int codigoEmpresa ) {
+		Query query = manager.createQuery( "SELECT o FROM Oferta o WHERE o.empresa = ?1" );
+		query.setParameter( 1, codigoEmpresa );
+		try {
+			return ( Oferta ) query.getResultList();
+		} catch ( NoResultException e ) {
+			return null;
+		}
+	}
 }

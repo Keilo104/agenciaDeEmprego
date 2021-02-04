@@ -1,12 +1,12 @@
 package org.agenciaDeEmprego.repositorio;
 
+import org.agenciaDeEmprego.modelo.Cargo;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.agenciaDeEmprego.modelo.Cargo;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class CargoRepositorio {

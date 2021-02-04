@@ -1,13 +1,12 @@
 package org.agenciaDeEmprego.repositorio;
 
+import org.agenciaDeEmprego.modelo.Candidato;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
-import org.agenciaDeEmprego.modelo.Candidato;
-import org.agenciaDeEmprego.modelo.Usuario;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class CandidatoRepositorio {
