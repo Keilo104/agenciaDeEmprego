@@ -18,16 +18,19 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CandidatoControle {
     private CandidatoRepositorio repositorio;
+    private OfertaRepositorio ofertasRepositorio;
 
     @Autowired
-    public CandidatoControle( CandidatoRepositorio repositorio ) {
+    public CandidatoControle( CandidatoRepositorio repositorio, OfertaRepositorio ofertaRepositorio ) {
         super();
         this.repositorio = repositorio;
+        this.ofertasRepositorio = ofertaRepositorio;
     }
 
     @RequestMapping("candidato-pagina-inicial")
     public String inicioEmpresa( @SessionAttribute("candidato") Candidato candidato, Model model ) {
         model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
+        model.addAttribute( "ofertas", ofertasRepositorio.buscarOfertas() );
         return "candidato/PaginaCandidato";
     }
 }

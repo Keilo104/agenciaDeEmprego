@@ -16,7 +16,19 @@
     
     <body>
         <div class="container">
+            <form method="POST" action="cadastrarCandidato">
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroCpf">CPF</label>
+                    <input class="form-control" id="cadastroCpf" type="text" placeholder="CPF" name="cpf">
+                </div>
         
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroNome">Nome</label>
+                    <input class="form-control" id="cadastroNome" type="text" placeholder="Nome" name="nome">
+                </div>
+        
+                <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
+            </form>
         </div>
     </body>
 </html>

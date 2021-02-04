@@ -16,18 +16,17 @@
     
     <body>
         <div class="container">
-            <h1>Bem vindo, ${sessionScope.empresa.nome} </h1>
-            
-            <c:if test="${not empty empregos}">
-                <h2>Vagas cadastradas</h2>
+            <h1> Bem vindo, ${sessionScope.empresa.nome} </h1>
+        
+            <c:if test="${not empty ofertas}">
+                <h2>Ofertas cadastradas</h2>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Data Nascimento</th>
-                        <th scope="col">Código CS</th>
-                        <th scope="col">Nome CS</th>
-                        <th scope="col">Detalhes</th>
+                        <th scope="col">Código</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Salário</th>
+                        <th scope="col">Horas</th>
                     </tr>
                     </thead>
         
@@ -39,18 +38,21 @@
                             <td> ${oferta.salario} </td>
                             <td> ${oferta.horas} </td>
                             <td>
-                                <a href="&codigo=${candidato.id}" class="btn btn-danger"> Detalhes </a>
+                                <a href="detalhes-oferta?numero=${oferta.codigo}" class="btn btn-primary"> Detalhes </a>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
+        
+                <a href="pagina-cadastro-oferta" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
-            
-            <c:if test="${empty empregos}">
+    
+            <c:if test="${empty ofertas}">
                 <h2>Você ainda não possui ofertas de emprego cadastradas</h2>
-                <p>Para começar, clique <a href="cadastrarOferta">aqui</a></p>
+                <a href="pagina-cadastro-oferta?numero=${sessionScope.empresa.nome}" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
         </div>
+
     </body>
 </html>
