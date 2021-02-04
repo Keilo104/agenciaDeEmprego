@@ -45,4 +45,14 @@ public class CandidatoRepositorio {
 			return null;
 		}
 	}
+
+	public Candidato getCandidatoByLogin(Candidato candidato) {
+		Query query = manager.createQuery("select c from Candidato c where c.login = ?1");
+		query.setParameter(1, candidato.getLogin());
+		try {
+			return (Candidato) query.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
 }

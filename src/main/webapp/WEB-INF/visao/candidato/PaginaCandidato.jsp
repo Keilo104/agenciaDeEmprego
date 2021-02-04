@@ -44,6 +44,9 @@
                     </tbody>
                 </table>
             </c:if>
+            <c:if test="${empty ofertas}">
+                Nenhuma empresa cadastrou ofertas ainda.
+            </c:if>
         </div>
     </body>
 </html>

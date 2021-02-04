@@ -38,10 +38,9 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarCandidato", method = RequestMethod.POST)
 	public String autenticar( Candidato candidato, HttpSession sessao ) {
 		if ( repositorioCandidato.autenticarCandidato( candidato ) ) {
+			candidato = repositorioCandidato.getCandidatoByLogin( candidato );
 			sessao.setAttribute( "candidato", candidato );
-			if ( candidato instanceof Candidato ) {
-				return "redirect:candidato-pagina-inicial";
-			}
+			return "redirect:candidato-pagina-inicial";
 		}
 		return "LoginCandidato";
 	}
@@ -50,9 +49,7 @@ public class AutenticadorControle {
 	public String autenticar( Empresa empresa, HttpSession sessao ) {
 		if ( repositorioEmpresa.autenticarEmpresa( empresa ) ) {
 			sessao.setAttribute( "empresa", empresa );
-			if ( empresa instanceof Empresa ) {
-				return "redirect:empresa-pagina-inicial";
-			}
+			return "redirect:empresa-pagina-inicial";
 		}
 		return "LoginEmpresa";
 	}
