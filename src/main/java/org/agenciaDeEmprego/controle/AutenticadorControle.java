@@ -20,10 +20,15 @@ public class AutenticadorControle {
 		this.repositorio = repositorio;
 	}
 	
-	@RequestMapping("login")
-	public String loginForm() {
-		//System.out.println("alo");
-		return "login";
+	@RequestMapping("loginCandidato")
+	public String loginCandidato() {
+		//System.out.println("oi");
+		return "loginCandidato";
+	}
+
+	@RequestMapping("loginEmpresa")
+	public String loginEmpresa() {
+		return "loginEmpresa";
 	}
 	
 	@RequestMapping(value = "autenticar", method = RequestMethod.POST)
@@ -36,14 +41,14 @@ public class AutenticadorControle {
 				return "redirect:candidato-pagina-inicial";
 			}
 		}
-		return "redirect:login";
+		return "loginCandidato";
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession sessao) {
 		sessao.removeAttribute("usuario");
 		sessao.invalidate();
-		return "redirect:login";
+		return "loginCandidato";
 	}
 
 }

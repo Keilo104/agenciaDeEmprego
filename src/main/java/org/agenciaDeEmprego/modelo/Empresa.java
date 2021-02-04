@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Empresa extends Usuario {
-
 	private int codigo;
 	private String nome;
 

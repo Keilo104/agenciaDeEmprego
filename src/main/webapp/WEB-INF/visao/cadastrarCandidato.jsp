@@ -16,20 +16,7 @@
 
 <body>
 <div class="container">
-    <h1>Cadastre um usuário</h1>
-    <form method="POST" action="cadastrar">
-        <div class="form-group">
-            <label class="form-check-label" for="login">Login</label>
-            <input class="form-control" id="login" type="text" placeholder="Nome de usu?rio" name="login">
-        </div>
-        
-        <div class="form-group">
-            <label class="form-check-label" for="senha">Senha</label>
-            <input class="form-control" id="senha" type="password" placeholder="Senha" name="senha">
-        </div>
-        
-        <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
-    </form>
+
 </div>
 </body>
 </html>

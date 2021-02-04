@@ -1,17 +1,18 @@
 package org.agenciaDeEmprego.modelo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
-public class Usuario {
-
+@MappedSuperclass
+public abstract class Usuario {
 	@Id
+	@GeneratedValue
+	private int id;
+
+	@Column(unique = true)
 	private String login;
 	private String senha;
 
 	public Usuario() {
-		
 	}
 	
 	public Usuario(String login, String senha) {
@@ -36,4 +37,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
