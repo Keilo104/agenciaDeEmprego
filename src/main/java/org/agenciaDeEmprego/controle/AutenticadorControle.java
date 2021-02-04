@@ -1,17 +1,15 @@
 package org.agenciaDeEmprego.controle;
 
-import javax.servlet.http.HttpSession;
-
 import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Empresa;
-import org.agenciaDeEmprego.modelo.Usuario;
 import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
-import org.agenciaDeEmprego.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class AutenticadorControle {
@@ -54,11 +52,9 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarEmpresa", method = RequestMethod.POST)
 	public String autenticar(Empresa empresa, HttpSession sessao) {
 		if(repositorioEmpresa.autenticarEmpresa(empresa)) {
-			sessao.setAttribute("usuario", empresa);
-			if(empresa.getLogin().contains("admin")) {
-				return "redirect:admin-pagina-inicial";//TODO
-			} else {
-				return "redirect:candidato-pagina-inicial";//TODO
+			sessao.setAttribute("empresa", empresa);
+			if (empresa instanceof Empresa) {
+				return "redirect:empresa-pagina-inicial";
 			}
 		}
 		return "loginEmpresa";
