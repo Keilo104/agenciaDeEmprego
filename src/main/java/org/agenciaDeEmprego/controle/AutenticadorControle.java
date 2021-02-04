@@ -31,9 +31,9 @@ public class AutenticadorControle {
 		if(repositorio.autenticar(usuario)) {
 			sessao.setAttribute("usuario", usuario);
 			if(usuario.getLogin().contains("admin")) {
-				return "redirect:admin";
+				return "redirect:admin-pagina-inicial";
 			} else {
-				return "redirect:candidatoInicio";
+				return "redirect:candidato-pagina-inicial";
 			}
 		}
 		return "redirect:login";

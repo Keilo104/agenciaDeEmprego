@@ -5,9 +5,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="author" content="Lucas Ceoni, Emanoela Simão, Vitor Pastore, João Araújo e Souza" />
-    <meta name="description" content="Aula PW3 - Trabalho final" />
-    <meta name="keywords" content="aula, web, java, mvc, servlet, ifsp, ads" />
+    <meta name="author" content="Lucas Ceoni, Emanoela Simão, Vitor Pastore, João Araújo e Souza"/>
+    <meta name="description" content="Aula PW3 - Trabalho final"/>
+    <meta name="keywords" content="aula, web, java, mvc, servlet, ifsp, ads"/>
     <meta name="date" content="27/01/2021"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,18 +17,33 @@
 <body>
 <div class="container">
     <h1>Página de Administração</h1>
-    <p>Seja bem vindo, ${sessionScope.login} | <a href="controle?acao=Deslogar">Sair</a></p>
-
+    <p>Seja bem vindo, ${sessionScope.usuario.login} | <a href="logout">Sair</a></p>
+    
     <h2>Cadastre uma nova empresa</h2>
-    <form method="POST" action="controle">
-        <div class="form-group">
-            <label class="form-check-label" for="codigo">Código</label>
-            <input class="form-control" id="codigo" type="text" placeholder="Código" name="codigo">
-        </div>
-
-        <div class="form-group">
-            <label class="form-check-label" for="nome">Nome</label>
-            <input class="form-control" id="nome" type="text" placeholder="Nome" name="nome">
+    <form method="POST" action="cadastrar-empresa">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-check-label" for="codigo">Código</label>
+                    <input class="form-control" id="codigo" type="text" placeholder="Código" name="codigo">
+                </div>
+    
+                <div class="form-group">
+                    <label class="form-check-label" for="nome">Nome</label>
+                    <input class="form-control" id="nome" type="text" placeholder="Nome" name="nome">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label class="form-check-label" for="login">Login</label>
+                    <input class="form-control" id="login" type="text" placeholder="Nome de usuário" name="login">
+                </div>
+    
+                <div class="form-group">
+                    <label class="form-check-label" for="senha">Senha</label>
+                    <input class="form-control" id="senha" type="password" placeholder="Senha" name="senha">
+                </div>
+            </div>
         </div>
 
         <input type="submit" class="btn btn-primary" value="Cadastrar">
@@ -43,24 +58,30 @@
             <thead>
             <tr>
                 <th scope="col">Código</th>
-                <th scope="col">Empresa</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Excluir</th>
             </tr>
             </thead>
 
+            <hr>
+
             <tbody>
             <c:forEach var="empresa" items="${requestScope.empresas}">
                 <tr>
-                    <td> ${produto.codigo} </td>
-                    <td> ${produto.empresa} </td>
+                    <td> ${empresa.codigo} </td>
+                    <td> ${empresa.nome} </td>
+                    <td> ${empresa.login} </td>
                     <td>
-                        <a href="controle?acao=EditarEmpresa&codigo=${empresa.codigo}">
-                            <button type="button" class="btn btn-primary">Editar</button> </a>
+                        <a href="editar-empresa?codigo=${empresa.login}">
+                            <button type="button" class="btn btn-primary">Editar</button>
+                        </a>
                     </td>
                     <td>
-                        <a href="controle?acao=ExcluirEmpresa&codigo=${empresa.codigo}">
-                            <button type="button" class="btn btn-danger">Excluir</button> </a>
+                        <a href="excluir-empresa?codigo=${empresa.codigo}">
+                            <button type="button" class="btn btn-danger">Excluir</button>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

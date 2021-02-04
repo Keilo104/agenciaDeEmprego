@@ -5,9 +5,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="author" content="Lucas Ceoni, Emanoela Sim?o, Vitor Pastore, Jo?o Ara?jo e Souza" />
-    <meta name="description" content="Aula PW3 - Trabalho final" />
-    <meta name="keywords" content="aula, web, java, mvc, servlet, ifsp, ads" />
+    <meta name="author" content="Lucas Ceoni, Emanoela Sim?o, Vitor Pastore, Jo?o Ara?jo e Souza"/>
+    <meta name="description" content="Aula PW3 - Trabalho final"/>
+    <meta name="keywords" content="aula, web, java, mvc, servlet, ifsp, ads"/>
     <meta name="date" content="27/01/2021"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <h1>Bem vindo, ${sessionScope.login} </h1>
-
+    
     <p>Abaixo encontram-se as empresas e cargos </p>
     <c:if test="${not empty empregos}">
         <table class="table">
@@ -28,7 +28,7 @@
                 <th scope="col">Cargo</th>
             </tr>
             </thead>
-
+            
             <tbody>
             <c:forEach var="produto" items="${requestScope.empregos}">
                 <tr>
@@ -37,7 +37,8 @@
                     <td> ${produto.cargo} </td>
                     <td>
                         <a href="controle?acao=DesvincularCurriculo&codigo=${empresa.codigo}">
-                            <button type="button" class="btn btn-danger">Desvincular Curriculo</button> </a>
+                            <button type="button" class="btn btn-danger">Desvincular Curriculo</button>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>
