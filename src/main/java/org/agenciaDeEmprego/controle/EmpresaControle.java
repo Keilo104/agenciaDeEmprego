@@ -33,7 +33,7 @@ public class EmpresaControle {
     public String cadastrarEmpresa( Empresa empresa, Model model) {
         repositorio.cadastrar( empresa );
         model.addAttribute("msg", "sucesso");
-        return "redirect:loginEmpresa";
+        return "LoginEmpresa";
     }
 
     @Transactional

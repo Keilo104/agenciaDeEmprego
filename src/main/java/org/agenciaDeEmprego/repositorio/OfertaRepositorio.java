@@ -36,4 +36,13 @@ public class OfertaRepositorio {
 			return null;
 		}
 	}
+
+	public Oferta buscarOfertas(  ) {
+		Query query = manager.createQuery( "SELECT o FROM Oferta o" );
+		try {
+			return ( Oferta ) query.getResultList();
+		} catch ( NoResultException e ) {
+			return null;
+		}
+	}
 }
