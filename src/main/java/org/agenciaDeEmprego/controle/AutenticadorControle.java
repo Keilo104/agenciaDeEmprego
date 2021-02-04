@@ -40,7 +40,7 @@ public class AutenticadorControle {
 	public String autenticar(Candidato candidato, HttpSession sessao) {
 		if(repositorioCandidato.autenticarCandidato(candidato)) {
 			sessao.setAttribute("usuario", candidato);
-			if(candidato.getLogin().contains("admin")) {
+			if(candidato.getLogin().equals("admin")) {
 				return "redirect:admin-pagina-inicial";
 			} else {
 				return "redirect:candidato-pagina-inicial";

@@ -1,12 +1,19 @@
 package org.agenciaDeEmprego.modelo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Cargo {
 	@Id
+	@GeneratedValue
+	private int id;
+
+	@Column(unique = true)
 	private int codigo;
+
 	private String nome;
 	private String descricao;
 
@@ -18,6 +25,14 @@ public class Cargo {
 		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
+	}
+
+	public Cargo(int id, int codigo, String nome, String descricao) {
+		super();
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.id = id;
 	}
 
 	public int getCodigo() {
