@@ -10,7 +10,7 @@
     <meta name="date" content="27/01/2021"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Tela de Login</title>
+    <title>Tela de Login de Candidato</title>
 </head>
 
 <body>
@@ -34,8 +34,23 @@
         </div>
 
         <div class="col-6">
-            <h1>Cadastre um usuário</h1>
-            <form method="POST" action="cadastrar">
+            <h1>Cadastre-se!</h1>
+            <form method="POST" action="cadastrarCandidato">
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroCpf">CPF</label>
+                    <input class="form-control" id="cadastroCpf" type="text" placeholder="CPF" name="cpf">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroNome">Nome</label>
+                    <input class="form-control" id="cadastroNome" type="text" placeholder="Nome" name="nome">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroDataNasc">Data de Nascimento</label>
+                    <input class="form-control" id="cadastroDataNasc" type="date" name="dataNasc">
+                </div>
+
                 <div class="form-group">
                     <label class="form-check-label" for="cadastroLogin">Login</label>
                     <input class="form-control" id="cadastroLogin" type="text" placeholder="Nome de usuário" name="login">
@@ -48,6 +63,10 @@
 
                 <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
             </form>
+        </div>
+
+        <div class="col-12 align-content-center">
+            <a href="loginEmpresa" class="btn btn-primary">É uma empresa? Clique aqui!</a>
         </div>
     </div>
 </div>

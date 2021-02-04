@@ -22,6 +22,13 @@ public class Candidato extends Usuario {
 	public Candidato() {
 	}
 
+	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc ) {
+		super( login, senha );
+		this.cpf = cpf;
+		this.nome = nome;
+		this.dataNasc = dataNasc;
+	}
+
 	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
 		super( login, senha );
 		this.cpf = cpf;

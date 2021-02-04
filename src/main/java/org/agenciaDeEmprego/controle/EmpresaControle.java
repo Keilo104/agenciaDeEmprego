@@ -33,10 +33,10 @@ public class EmpresaControle {
     }
 
     @Transactional
-    @RequestMapping(value = "cadastrar-empresa", method = RequestMethod.POST)
+    @RequestMapping(value = "cadastrarEmpresa", method = RequestMethod.POST)
     public String cadastrarEmpresa( Empresa empresa ) {
         repositorio.cadastrar( empresa );
-        return "redirect:admin-pagina-inicial";
+        return "redirect:loginEmpresa";
     }
 
     @Transactional
