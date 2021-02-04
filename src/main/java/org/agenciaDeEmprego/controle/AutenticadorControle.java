@@ -6,6 +6,7 @@ import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -16,7 +17,6 @@ public class AutenticadorControle {
 
 	private CandidatoRepositorio repositorioCandidato;
 	private EmpresaRepositorio repositorioEmpresa;
-
 
 	@Autowired //injeção de dependência
 	public AutenticadorControle(CandidatoRepositorio repositorio, EmpresaRepositorio repositorioEmpresa) {
