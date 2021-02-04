@@ -1,12 +1,13 @@
 package org.agenciaDeEmprego.repositorio;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Usuario;
+import org.hibernate.JDBCException;
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -15,8 +16,16 @@ public class CandidatoRepositorio {
 	@PersistenceContext
 	private EntityManager manager;
 
-	public void cadastrar(Candidato candidato) {
-		manager.persist(candidato);
+	public boolean cadastrar(Candidato candidato) {
+		try {
+			System.out.println("tentando");
+			manager.persist(candidato);
+			manager.flush();
+			return true;
+		} catch(EntityExistsException e) {
+			System.out.println("erro");
+			return false;
+		}
 	}
 
 	public boolean autenticarCandidato(Candidato usuario) {

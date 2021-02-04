@@ -8,6 +8,7 @@ import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.UsuarioRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -24,8 +25,8 @@ public class AutenticadorControle {
 	}
 	
 	@RequestMapping("loginCandidato")
-	public String loginCandidato() {
-		//System.out.println("oi");
+	public String loginCandidato(@ModelAttribute("candidato") Candidato candidato, @ModelAttribute("msg") String msg) {
+        //System.out.println(candidato.toString());
 		return "loginCandidato";
 	}
 
