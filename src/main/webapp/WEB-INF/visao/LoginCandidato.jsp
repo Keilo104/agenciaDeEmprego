@@ -16,11 +16,9 @@
 
 <body>
 <div class="container">
-<%--    ${requestScope.candidato}--%>
-<%--    <c:if test="${not empty requestScope.candidato}">--%>
-
-<%--        <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>--%>
-<%--    </c:if>--%>
+    <c:if test="${not empty msg and msg == 'sucesso'}">
+        <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>
+    </c:if>
     <div class="row mt-5">
         <div class="col-6">
             <h1>Faça Login</h1>

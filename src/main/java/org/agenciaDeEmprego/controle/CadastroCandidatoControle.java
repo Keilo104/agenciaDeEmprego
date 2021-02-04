@@ -22,10 +22,13 @@ public class CadastroCandidatoControle {
 
     @Transactional
     @RequestMapping(value = "cadastrarCandidato", method = RequestMethod.POST)
-    public String cadastrar( Candidato candidato, Model model) {
-        repositorio.cadastrar( candidato );
-        model.addAttribute("candidato", candidato);
-        System.out.println(model.containsAttribute("candidato"));
+    public String cadastrar( Candidato candidato, Model model ) {
+        if(repositorio.cadastrar( candidato )) {
+            model.addAttribute("candidato", candidato);
+            model.addAttribute("msg", "sucesso");
+        } else {
+            model.addAttribute("msg", "erro");
+        }
         return "redirect:loginCandidato";
     }
 }

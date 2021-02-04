@@ -84,4 +84,16 @@ public class Candidato extends Usuario {
 	public void setExperiencia(List<Cargo> experiencia) {
 		this.experiencia = experiencia;
 	}
+
+	@Override
+	public String toString() {
+		return "Candidato{" +
+				"cpf='" + cpf + '\'' +
+				", nome='" + nome + '\'' +
+				", dataNasc=" + dataNasc +
+				", codigoCS=" + codigoCS +
+				", nomeCS='" + nomeCS + '\'' +
+				", experiencia=" + experiencia +
+				"} " + super.toString();
+	}
 }
