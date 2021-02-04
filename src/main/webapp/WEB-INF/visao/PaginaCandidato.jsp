@@ -5,13 +5,13 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <meta name="author" content="Lucas Ceoni, Emanoela Sim?o, Vitor Pastore, Jo?o Ara?jo e Souza"/>
+    <meta name="author" content="Lucas Ceoni, Emanoela Simão, Vitor Pastore, João Araújo e Souza"/>
     <meta name="description" content="Aula PW3 - Trabalho final"/>
     <meta name="keywords" content="aula, web, java, mvc, servlet, ifsp, ads"/>
     <meta name="date" content="27/01/2021"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>P?gina do Candidato</title>
+    <title>Página do Candidato</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">C?digo</th>
+                <th scope="col">Código</th>
                 <th scope="col">Empresa</th>
                 <th scope="col">Cargo</th>
             </tr>

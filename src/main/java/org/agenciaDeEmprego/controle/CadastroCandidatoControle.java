@@ -25,7 +25,6 @@ public class CadastroCandidatoControle {
     @Transactional
     @RequestMapping(value = "cadastrarCandidato", method = RequestMethod.POST)
     public String cadastrar( Candidato candidato ) {
-        System.out.println("oi");
         repositorio.cadastrar( candidato );
         return "redirect:loginCandidato";
     }
