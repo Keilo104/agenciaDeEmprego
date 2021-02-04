@@ -39,7 +39,7 @@ public class CandidatoRepositorio {
 
 	public Candidato getCandidato(Candidato candidato) {
 		try {
-			return manager.find( Candidato.class, candidato );
+			return manager.find( Candidato.class, candidato.getCpf() );
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			return null;

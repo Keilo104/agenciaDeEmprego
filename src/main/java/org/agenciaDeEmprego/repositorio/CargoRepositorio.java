@@ -4,10 +4,7 @@ import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository
@@ -49,6 +46,16 @@ public class CargoRepositorio {
     public List<Cargo> buscarCargos( Empresa empresa ) {
         Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.empresa = ?1" );
         query.setParameter( 1, empresa.getId() );
+        try {
+            return query.getResultList();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<Cargo> buscarTodosCargos() {
+        TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class);
         try {
             return query.getResultList();
         } catch ( Exception e ) {
