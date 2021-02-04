@@ -12,11 +12,11 @@ public class Oferta {
 	@Id
 	@GeneratedValue
 	int codigo;
+
 	@OneToOne
 	Cargo cargo;
 
 	@OneToOne
-	@Autowired
 	Empresa empresa;
 	
 	private float salario;
@@ -64,6 +64,4 @@ public class Oferta {
 	public void setHoras(int horas) {
 		this.horas = horas;
 	}
-	
-	
 }

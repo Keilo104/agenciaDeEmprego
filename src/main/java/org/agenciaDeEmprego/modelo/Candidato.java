@@ -7,28 +7,19 @@ import javax.persistence.*;
 
 @Entity
 public class Candidato extends Usuario {
-
+	@Column(unique = true)
 	private String cpf;
+
 	private String nome;
 	private LocalDate dataNasc;
 
 	private int codigoCS;
-
 	private String nomeCS;
 
 	@OneToMany
 	private List<Cargo> experiencia;
 
 	public Candidato() {
-	}
-
-	public Candidato( String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
-		this.cpf = cpf;
-		this.nome = nome;
-		this.dataNasc = dataNasc;
-		this.codigoCS = codigoCS;
-		this.nomeCS = nomeCS;
-		this.experiencia = experiencia;
 	}
 
 	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
@@ -88,8 +79,4 @@ public class Candidato extends Usuario {
 	public void setExperiencia(List<Cargo> experiencia) {
 		this.experiencia = experiencia;
 	}
-
-	
-	
-	
 }

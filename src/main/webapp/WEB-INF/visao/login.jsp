@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -15,20 +15,41 @@
 
 <body>
 <div class="container">
-    <h1>Faça Login</h1>
-    <form method="POST" action="autenticar">
-        <div class="form-group">
-            <label class="form-check-label" for="login">Login</label>
-            <input class="form-control" id="login" type="text" placeholder="Nome de usuário" name="login">
+    <div class="row mt-5">
+        <div class="col-6">
+            <h1>Faça Login</h1>
+            <form method="POST" action="autenticar">
+                <div class="form-group">
+                    <label class="form-check-label" for="loginLogin">Login</label>
+                    <input class="form-control" id="loginLogin" type="text" placeholder="Nome de usuário" name="login">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-check-label" for="loginSenha">Senha</label>
+                    <input class="form-control" id="loginSenha" type="password" placeholder="Senha" name="senha">
+                </div>
+
+                <input type="submit" class="btn btn-primary" name="acao" value="Logar">
+            </form>
         </div>
-        
-        <div class="form-group">
-            <label class="form-check-label" for="senha">Senha</label>
-            <input class="form-control" id="senha" type="password" placeholder="Senha" name="senha">
+
+        <div class="col-6">
+            <h1>Cadastre um usuário</h1>
+            <form method="POST" action="cadastrar">
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroLogin">Login</label>
+                    <input class="form-control" id="cadastroLogin" type="text" placeholder="Nome de usuário" name="login">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroSenha">Senha</label>
+                    <input class="form-control" id="cadastroSenha" type="password" placeholder="Senha" name="senha">
+                </div>
+
+                <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
+            </form>
         </div>
-        
-        <input type="submit" class="btn btn-primary" name="acao" value="Logar">
-    </form>
+    </div>
 </div>
 </body>
 </html>

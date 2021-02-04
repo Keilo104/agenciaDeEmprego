@@ -5,17 +5,18 @@ import javax.persistence.Id;
 
 @Entity
 public class Cargo {
-	
 	@Id
 	private int codigo;
+	private String nome;
 	private String descricao;
 
 	public Cargo() {
 	}
 
-	public Cargo( int codigo, String descricao) {
+	public Cargo( int codigo, String nome, String descricao) {
 		super();
 		this.codigo = codigo;
+		this.nome = nome;
 		this.descricao = descricao;
 	}
 
@@ -34,5 +35,12 @@ public class Cargo {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 }
