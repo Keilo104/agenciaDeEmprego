@@ -17,7 +17,7 @@
 <body>
 <div class="container">
     <c:if test="${not empty msg and msg == 'sucesso'}">
-        <div style="margin-top: 20px" class="alert alert-success">Cadastro de ${candidato.nome} realizado com sucesso!</div>
+        <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>
     </c:if>
     <div class="row mt-5">
         <div class="col-6">

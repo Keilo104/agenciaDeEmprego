@@ -17,7 +17,6 @@ public class AutenticadorControle {
 
 	private CandidatoRepositorio repositorioCandidato;
 
-
 	@Autowired //injeção de dependência
 	public AutenticadorControle(CandidatoRepositorio repositorio) {
 		super();

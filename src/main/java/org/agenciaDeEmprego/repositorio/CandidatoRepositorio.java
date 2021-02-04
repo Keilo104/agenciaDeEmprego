@@ -18,12 +18,10 @@ public class CandidatoRepositorio {
 
 	public boolean cadastrar(Candidato candidato) {
 		try {
-			System.out.println("tentando");
 			manager.persist(candidato);
 			manager.flush();
 			return true;
 		} catch(EntityExistsException e) {
-			System.out.println("erro");
 			return false;
 		}
 	}
