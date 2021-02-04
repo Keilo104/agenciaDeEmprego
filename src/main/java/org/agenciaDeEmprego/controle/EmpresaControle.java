@@ -34,9 +34,10 @@ public class EmpresaControle {
 
     @Transactional
     @RequestMapping(value = "cadastrarEmpresa", method = RequestMethod.POST)
-    public String cadastrarEmpresa( Empresa empresa ) {
+    public String cadastrarEmpresa( Empresa empresa, Model model) {
         repositorio.cadastrar( empresa );
-        return "redirect:loginEmpresa?msg=sucesso";
+        model.addAttribute("msg", "sucesso");
+        return "redirect:loginEmpresa";
     }
 
     @Transactional

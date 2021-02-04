@@ -1,13 +1,11 @@
 package org.agenciaDeEmprego.repositorio;
 
 
+import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository
@@ -48,4 +46,16 @@ public class EmpresaRepositorio {
             return false;
         }
     }
-}
+
+    public boolean autenticarEmpresa(Empresa empresa) {
+            Query query = manager.createQuery("select u from Empresa u where u.login = ?1 and u.senha = ?2");
+            query.setParameter(1, empresa.getLogin()).setParameter(2, empresa.getSenha());
+            try {
+                query.getSingleResult();
+                return true;
+            } catch (NoResultException e) {
+                return false;
+            }
+        }
+    }
+

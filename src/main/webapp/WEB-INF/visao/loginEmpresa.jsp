@@ -15,15 +15,15 @@
 
 <body>
 <div class="container">
-    <c:if test="${not empty msg}">
-        <c:if test="${msg='sucesso'}">
-            <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>
-        </c:if>
-    </c:if>
+<%--    <c:if test="${not empty msg}">--%>
+<%--        <c:if test="${msg='sucesso'}">--%>
+<%--            <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>--%>
+<%--        </c:if>--%>
+<%--    </c:if>--%>
     <div class="row mt-5">
         <div class="col-6">
             <h1>Faça Login</h1>
-            <form method="POST" action="autenticar">
+            <form method="POST" action="autenticarEmpresa">
                 <div class="form-group">
                     <label class="form-check-label" for="loginLogin">Login</label>
                     <input class="form-control" id="loginLogin" type="text" placeholder="Nome de usuário" name="login">
