@@ -49,10 +49,8 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarEmpresa", method = RequestMethod.POST)
 	public String autenticar( Empresa empresa, HttpSession sessao ) {
 		if ( repositorioEmpresa.autenticarEmpresa( empresa ) ) {
-			sessao.setAttribute( "empresa", empresa );
-			if ( empresa instanceof Empresa ) {
-				return "redirect:empresa-pagina-inicial";
-			}
+			 sessao.setAttribute( "empresa", repositorioEmpresa.getEmpresa( empresa.getLogin() ) );
+			return "redirect:empresa-pagina-inicial";
 		}
 		return "LoginEmpresa";
 	}

@@ -25,6 +25,17 @@ public class EmpresaRepositorio {
         }
     }
 
+    public Empresa getEmpresa( String email ) {
+            Query query = manager.createQuery( "select e from Empresa e WHERE e.login = ?1 ");
+            query.setParameter( 1, email );
+        try {
+            return ( Empresa ) query.getSingleResult();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List<Empresa> getAll() {
         TypedQuery<Empresa> query = manager.createQuery( "select e from Empresa e", Empresa.class );
         try {

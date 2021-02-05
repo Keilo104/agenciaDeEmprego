@@ -1,5 +1,7 @@
 package org.agenciaDeEmprego.modelo;
 
+import com.sun.istack.Nullable;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,9 +9,12 @@ import java.util.List;
 public class Oferta {
     @Id
     @GeneratedValue
-    int codigo;
+    int id;
 
-    @OneToOne
+    @Column(unique = true)
+    String codigo;
+
+    @ManyToOne
     Cargo cargo;
 
     @OneToMany
@@ -24,7 +29,7 @@ public class Oferta {
     public Oferta() {
     }
 
-    public Oferta( int codigo, Cargo cargo, Empresa empresa, float salario, int horas ) {
+    public Oferta( String codigo, Cargo cargo, Empresa empresa, float salario, int horas ) {
         super();
         this.codigo = codigo;
         this.cargo = cargo;
@@ -33,11 +38,17 @@ public class Oferta {
         this.horas = horas;
     }
 
-    public int getCodigo() {
+    public Oferta( String codigo, float salario, int horas ) {
+        this.codigo = codigo;
+        this.salario = salario;
+        this.horas = horas;
+    }
+
+    public String getCodigo() {
         return codigo;
     }
 
-    public void setCodigo( int codigo ) {
+    public void setCodigo( String codigo ) {
         this.codigo = codigo;
     }
 

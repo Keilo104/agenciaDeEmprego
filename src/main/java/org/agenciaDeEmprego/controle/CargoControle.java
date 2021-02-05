@@ -42,9 +42,11 @@ public class CargoControle {
         return "empresa/CadastrarCargo";
     }
 
+    /*
     @RequestMapping("pagina-cadastro-cargo")
     public String visaoCadastroCargo( @SessionAttribute("empresa") Empresa empresa, Model model ) {
         model.addAttribute( "cargos", repositorio.buscarCargos( empresa ) );
         return "empresa/CadastrarCargo";
     }
+    */
 }
