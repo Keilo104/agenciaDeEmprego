@@ -26,9 +26,9 @@
     
                 <div class="form-group">
                     <label for="cargos">Cargo</label>
-                    <select class="form-control" id="cargos" name="cargo">
+                    <select class="form-control" id="cargos" name="id">
                         <c:forEach var="cargo" items="${requestScope.cargos}">
-                            <option value=1> ${cargo.nome} </option>
+                            <option value=${cargo.id}> ${cargo.nome} </option>
                         </c:forEach>
                     </select>
                 </div>
@@ -44,6 +44,7 @@
                 </div>
                 <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
             </form>
+            <a href="empresa-pagina-inicial" class="btn btn-primary">Voltar</a>
         </div>
     </body>
 </html>

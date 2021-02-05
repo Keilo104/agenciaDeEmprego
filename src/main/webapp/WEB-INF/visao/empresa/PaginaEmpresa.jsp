@@ -38,7 +38,7 @@
                             <td> ${oferta.salario} </td>
                             <td> ${oferta.horas} </td>
                             <td>
-                                <a href="detalhes-oferta?numero=${oferta.codigo}" class="btn btn-primary"> Detalhes </a>
+                                <a href="detalhes-oferta?id=${oferta.id}" class="btn btn-primary"> Detalhes </a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -50,7 +50,7 @@
         
             <c:if test="${empty ofertas}">
                 <h2>Você ainda não possui ofertas de emprego cadastradas</h2>
-                <a href="pagina-cadastro-oferta?numero=${sessionScope.empresa.codigo}" class="btn btn-primary"> Cadastrar Oferta </a>
+                <a href="pagina-cadastro-oferta" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
         </div>
 

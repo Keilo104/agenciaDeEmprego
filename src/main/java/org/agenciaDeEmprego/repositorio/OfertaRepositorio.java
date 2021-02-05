@@ -21,11 +21,23 @@ public class OfertaRepositorio {
 	}
 	
 	public Oferta getOferta(int codigo) {
-		Query query = manager.createQuery("select u from Oferta u where u.codigo = ?1");
+		Query query = manager.createQuery("select u from Oferta u where u.id = ?1");
 		query.setParameter(1, codigo);
 		try {
 			return (Oferta) query.getSingleResult();
 		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public Oferta buscarCandidatosPelaOferta(int codigo) {
+		Query query = manager.createQuery( "select * from Ofer oc \n" +
+											"join candidato c on c.id = oc.candidatos_id\n" +
+											"join oferta o on oc.oferta_id = o.id" );
+		query.setParameter( 1, codigo );
+		try {
+			return ( Oferta ) query.getSingleResult();
+		} catch ( NoResultException e ) {
 			return null;
 		}
 	}

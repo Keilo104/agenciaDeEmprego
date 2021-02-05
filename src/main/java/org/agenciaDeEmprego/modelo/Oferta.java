@@ -17,7 +17,7 @@ public class Oferta {
     @ManyToOne
     Cargo cargo;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Candidato> candidatos;
 
     @ManyToOne
@@ -49,6 +49,22 @@ public class Oferta {
         this.salario = salario;
         this.horas = horas;
         this.cargo = cargo;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId( int id ) {
+        this.id = id;
+    }
+
+    public List<Candidato> getCandidatos() {
+        return candidatos;
+    }
+
+    public void setCandidatos( List<Candidato> candidatos ) {
+        this.candidatos = candidatos;
     }
 
     public String getCodigo() {

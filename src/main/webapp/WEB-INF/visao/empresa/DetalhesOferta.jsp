@@ -16,9 +16,9 @@
     
     <body>
         <div class="container">
-            <h1> ${sessionScope.oferta.nome} </h1>
+            <h1> ${requestScope.oferta.nome} </h1>
             
-            <c:if test="${not empty oferta.candidatos}">
+            <c:if test="${not empty requestScope.oferta.candidatos}">
                 <h2>Candidatos para a vaga corrente</h2>
                 <table class="table">
                     <thead>
@@ -49,7 +49,7 @@
                 <h2>Não há candidatos cadastrados para esta vaga.</h2>
             </c:if>
     
-            <a href="excluir-oferta&numero=${oferta.codigo}" class="btn btn-danger"> Excluir Oferta </a>
+            <a href="excluir-oferta&numero=${oferta.id}" class="btn btn-danger"> Excluir Oferta </a>
         </div>
     </body>
 </html>
