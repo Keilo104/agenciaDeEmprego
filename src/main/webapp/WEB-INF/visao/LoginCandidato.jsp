@@ -65,6 +65,18 @@
                     <input class="form-control" id="cadastroSenha" type="password" placeholder="Senha" name="senha">
                 </div>
 
+                    <span class="header">Ensino superior (opcional)</span>
+                    <div class="form-group">
+                        <label class="form-check-label" for="cadastroCodCurso">Código do curso superior</label>
+                        <input class="form-control" id="cadastroCodCurso" type="text" placeholder="Código do curso superior" name="codigoCS">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-check-label" for="cadastroNomeCurso">Código do curso superior</label>
+                        <input class="form-control" id="cadastroNomeCurso" type="text" placeholder="Nome do curso superior" name="nomeCS">
+                    </div>
+                </fieldset>
+
                 <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
             </form>
         </div>

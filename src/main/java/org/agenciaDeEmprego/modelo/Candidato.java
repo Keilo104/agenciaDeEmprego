@@ -2,9 +2,7 @@ package org.agenciaDeEmprego.modelo;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,16 +16,16 @@ public class Candidato extends Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNasc;
 
-	private int codigoCS;
+	private String codigoCS;
 	private String nomeCS;
 
-	@OneToMany
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Cargo> experiencia;
 
 	public Candidato() {
 	}
 
-	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
+	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, String codigoCS, String nomeCS, List<Cargo> experiencia ) {
 		super( login, senha );
 		this.cpf = cpf;
 		this.nome = nome;
@@ -61,11 +59,11 @@ public class Candidato extends Usuario {
 		this.dataNasc = dataNasc;
 	}
 
-	public int getCodigoCS() {
+	public String getCodigoCS() {
 		return codigoCS;
 	}
 
-	public void setCodigoCS(int codigoCS) {
+	public void setCodigoCS(String codigoCS) {
 		this.codigoCS = codigoCS;
 	}
 
@@ -83,6 +81,10 @@ public class Candidato extends Usuario {
 
 	public void setExperiencia(List<Cargo> experiencia) {
 		this.experiencia = experiencia;
+	}
+
+	public void addExperiencia (Cargo cargo) {
+		experiencia.add(cargo);
 	}
 
 	@Override

@@ -36,6 +36,16 @@ public class CargoRepositorio {
         }
     }
 
+    public Cargo buscarCargoPorId(int cargoCodigo ) {
+        Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.id = ?1" );
+        query.setParameter( 1, cargoCodigo );
+        try {
+            return ( Cargo ) query.getSingleResult();
+        } catch ( NoResultException e ) {
+            return null;
+        }
+    }
+
     public Cargo buscarCargo( Cargo cargo ) {
         return manager.find( Cargo.class, cargo );
     }
@@ -52,17 +62,6 @@ public class CargoRepositorio {
     public void atualizarCargo( Cargo cargo ) {
         manager.persist( cargo );
     }
-
-//    public List<Cargo> buscarCargos( Empresa empresa ) {
-//        Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.empresa = ?1" );
-//        query.setParameter( 1, empresa.getId() );
-//        try {
-//            return query.getResultList();
-//        } catch ( Exception e ) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
 
     public List<Cargo> buscarTodosCargos() {
         TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class);

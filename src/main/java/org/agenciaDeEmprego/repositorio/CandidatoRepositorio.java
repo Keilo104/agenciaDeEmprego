@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.transaction.Transactional;
 
 import org.agenciaDeEmprego.modelo.Candidato;
+import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.modelo.Usuario;
 import org.hibernate.JDBCException;
 import org.hibernate.exception.ConstraintViolationException;
@@ -26,6 +27,16 @@ public class CandidatoRepositorio {
 	public boolean cadastrar(Candidato candidato) {
 		try {
 			manager.persist(candidato);
+			manager.flush();
+			return true;
+		} catch(EntityExistsException e) {
+			return false;
+		}
+	}
+
+	public boolean update(Candidato candidato) {
+		try {
+			manager.merge(candidato);
 			manager.flush();
 			return true;
 		} catch(EntityExistsException e) {

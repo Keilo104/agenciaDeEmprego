@@ -85,5 +85,17 @@ public class EmpresaRepositorio {
             return null;
         }
     }
+
+    @Transactional
+    public boolean atualizarEmpresa(Empresa empresa) {
+        Query query = manager.createQuery("update Empresa u set u.nome = ?1 where u.codigo = ?2");
+        query.setParameter(1, empresa.getNome()).setParameter(2, empresa.getCodigo());
+        try {
+            query.executeUpdate();
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
+    }
 }
 

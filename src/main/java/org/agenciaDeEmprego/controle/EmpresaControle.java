@@ -27,8 +27,8 @@ public class EmpresaControle {
     }
 
     @RequestMapping("empresa-pagina-inicial")
-    public String inicioEmpresa( Model model, HttpSession sessao ) {
-        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas() );
+    public String inicioEmpresa( Empresa empresa, Model model, HttpSession sessao ) {
+        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas(empresa.getCodigo()) );
         return "empresa/PaginaEmpresa";
     }
 
@@ -40,14 +40,6 @@ public class EmpresaControle {
         return "LoginEmpresa";
     }
 
-    @Transactional
-    @RequestMapping("excluir-empresa")
-    public String excluirEmpresa( int codigo, Model model ) {
-        Empresa empresa = repositorio.getEmpresa( codigo );
-        repositorio.delete( empresa );
-        model.addAttribute("empresas", repositorio.getAll());
-        return "admin/Admin";
-    }
 
     @RequestMapping("editar-empresa")
     public String editarEmpresa( Integer codigo, Model model ) {
@@ -57,7 +49,10 @@ public class EmpresaControle {
         return "admin/EditarEmpresaAdmin";
     }
 
-//    public String atualizarEmpresa(){
-//        repositorio.
-//    }
+    @RequestMapping(value = "atualizar-empresa", method = RequestMethod.POST)
+    public String atualizarEmpresa(Empresa empresa){
+        if(repositorio.atualizarEmpresa(empresa)); {
+            return "redirect:admin-pagina-inicial";
+        }
+    }
 }

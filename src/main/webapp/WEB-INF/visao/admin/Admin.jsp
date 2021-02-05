@@ -52,6 +52,7 @@
                 </table>
             </c:if>
             <hr>
+
             <h2>Cadastre um novo cargo</h2>
             <form method="POST" action="cadastrar-cargo" id="cadCargo">
                 <div class="row">
@@ -89,7 +90,6 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Login</th>
                         <th scope="col">Editar</th>
-                        <th scope="col">Excluir</th>
                     </tr>
                     </thead>
 
@@ -105,12 +105,7 @@
                                 <a href="editar-empresa?codigo=${empresa.codigo}">
                                     <button type="button" class="btn btn-primary">Editar</button>
                                 </a>
-                            </td>
-                            <td>
-                                <a href="excluir-empresa?codigo=${empresa.codigo}">
-                                    <button type="button" class="btn btn-danger">Excluir</button>
-                                </a>
-                            </td>
+                            </td
                         </tr>
                     </c:forEach>
                     </tbody>
