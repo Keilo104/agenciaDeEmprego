@@ -1,7 +1,9 @@
 package org.agenciaDeEmprego.repositorio;
 
+import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,6 +22,8 @@ public class EmpresaRepositorio {
     }
 
     public void cadastrar(Empresa empresa ) {
+    @Transactional
+    public void cadastrar( Empresa empresa ) {
         manager.persist( empresa );
     }
 
@@ -73,5 +77,15 @@ public class EmpresaRepositorio {
                 return false;
             }
         }
+
+    public Empresa getEmpresaComCodigo(Integer codigo) {
+        Query query = manager.createQuery( "SELECT c FROM Empresa c WHERE c.codigo = ?1" );
+        query.setParameter( 1, codigo );
+        try {
+            return (Empresa) query.getSingleResult();
+        } catch ( NoResultException e ) {
+            return null;
+        }
     }
+}
 

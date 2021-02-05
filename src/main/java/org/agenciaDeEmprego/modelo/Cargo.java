@@ -67,4 +67,14 @@ public class Cargo {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	@Override
+	public String toString() {
+		return "Cargo{" +
+				"id=" + id +
+				", codigo=" + codigo +
+				", nome='" + nome + '\'' +
+				", descricao='" + descricao + '\'' +
+				'}';
+	}
 }

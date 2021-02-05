@@ -11,12 +11,12 @@
         <meta name="date" content="27/01/2021"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>Página do Candidato</title>
+        <title>Editar Empresa</title>
     </head>
 
     <body>
         <div class="container">
-            <h1>Cadastre um usuário</h1>
+            <h1>Edite uma empresa</h1>
             <form method="POST" action="cadastrar">
                 <div class="row">
                     <div class="col">
@@ -38,12 +38,12 @@
                     
                         <div class="form-group">
                             <label class="form-check-label" for="senha">Senha</label>
-                            <input class="form-control" id="senha" value="${empresa.senha}" type="password"  name="senha" />
+                            <input class="form-control" id="senha" value="${empresa.senha}" type="password"  name="senha" readonly/>
                         </div>
                     </div>
                 </div>
                 
-                <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
+                <input type="submit" class="btn btn-primary" name="acao" value="Atualizar">
             </form>
         </div>
     </body>

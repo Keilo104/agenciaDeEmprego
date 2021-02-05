@@ -44,23 +44,25 @@ public class CargoRepositorio {
         manager.remove( cargo );
     }
 
-    public void excluirCargoPorId( int cargoId ) {
-        manager.remove( cargoId );
+    public void excluirCargoPorId( int codigo ) {
+        Cargo c = buscarCargoPorCodigo(codigo);
+        manager.remove( c );
     }
 
     public void atualizarCargo( Cargo cargo ) {
         manager.persist( cargo );
     }
 
-    public List<Cargo> buscarCargos(  ) {
-        TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class );
-        try {
-            return query.getResultList();
-        } catch ( Exception e ) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    public List<Cargo> buscarCargos( Empresa empresa ) {
+//        Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.empresa = ?1" );
+//        query.setParameter( 1, empresa.getId() );
+//        try {
+//            return query.getResultList();
+//        } catch ( Exception e ) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
     public List<Cargo> buscarTodosCargos() {
         TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class);
