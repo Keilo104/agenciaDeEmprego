@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Candidato extends Usuario {
 	private String codigoCS;
 	private String nomeCS;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Cargo> experiencia;
 
 	public Candidato() {
@@ -84,6 +85,10 @@ public class Candidato extends Usuario {
 
 	public void setExperiencia(List<Cargo> experiencia) {
 		this.experiencia = experiencia;
+	}
+
+	public void addExperiencia (Cargo cargo) {
+		experiencia.add(cargo);
 	}
 
 	@Override

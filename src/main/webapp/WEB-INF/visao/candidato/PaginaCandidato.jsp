@@ -25,20 +25,24 @@
                     <thead>
                     <tr>
                         <th scope="col">Código</th>
-                        <th scope="col">Empresa</th>
                         <th scope="col">Cargo</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Horas</th>
+                        <th scope="col">Salário</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     
                     <tbody>
                     <c:forEach var="oferta" items="${requestScope.ofertas}">
                         <tr>
+                            <td> ${oferta.cargo.codigo} </td>
+                            <td> ${oferta.cargo.nome} </td>
                             <td> ${oferta.empresa.nome} </td>
-                            <td> ${oferta.cargo} </td>
-                            <td> ${oferta.salario} </td>
                             <td> ${oferta.horas} </td>
+                            <td> ${oferta.salario} </td>
                             <td>
-                                <a href="inscrever" class="btn btn-danger">Inscrever-se</a>
+                                <a href="inscrever?id=${oferta.id}" class="btn btn-danger">Inscrever-se</a>
                             </td>
                         </tr>
                     </c:forEach>
@@ -46,7 +50,7 @@
                 </table>
             </c:if>
             <c:if test="${empty ofertas}">
-                Nenhuma empresa cadastrou ofertas ainda.
+                Não existe nenhuma oferta que você ainda não se inscreveu.
             </c:if>
 
             <div class="candidatoCurriculo">
@@ -55,11 +59,11 @@
                 <p>Nome: ${sessionScope.candidato.nome} </p>
 
                 <h3>Experiencias:</h3>
-                <c:if test="${empty cargos}">
+                <c:if test="${empty sessionScope.candidato.experiencia}">
                     Nenhuma experiencia cadastrada
                 </c:if>
-                <c:if test="${not empty cargos}">
-                <c:forEach var="cargo" items="${requestScope.cargos}">
+                <c:if test="${not empty sessionScope.candidato.experiencia}">
+                <c:forEach var="cargo" items="${sessionScope.candidato.experiencia}">
                     <hr>
                         <h3>cargo.nome</h3>
                         <p>cargo.codigo</p>
@@ -68,6 +72,17 @@
                 </c:forEach>
                 </c:if>
             </div>
+            <hr>
+
+<%--            <form method="POST" action="adicionarExperiencia">--%>
+<%--            <h3>Adicionar nova Experiência</h3>--%>
+<%--            <select class="form-control" id="cargos" name="id">--%>
+<%--                <c:forEach var="cargo" items="${requestScope.cargos}">--%>
+<%--                    <option value="${cargo.id}"> ${cargo.nome} </option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
+<%--                <input type="submit" class="btn btn-primary" name="acao" value="Adicionar Experiência">--%>
+<%--            </form>--%>
         </div>
     </body>
 </html>

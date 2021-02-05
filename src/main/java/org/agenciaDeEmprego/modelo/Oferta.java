@@ -1,7 +1,5 @@
 package org.agenciaDeEmprego.modelo;
 
-import com.sun.istack.Nullable;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class Oferta {
     @ManyToOne
     Cargo cargo;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     List<Candidato> candidatos;
 
     @ManyToOne
@@ -82,5 +80,21 @@ public class Oferta {
 
     public void setHoras( int horas ) {
         this.horas = horas;
+    }
+
+    public void addCandidato( Candidato candidato ) {
+        this.candidatos.add(candidato);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean hasCandidato(Candidato candidato) {
+        return candidatos.contains(candidato);
     }
 }

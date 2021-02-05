@@ -1,7 +1,9 @@
 package org.agenciaDeEmprego.controle;
 
 import org.agenciaDeEmprego.modelo.Candidato;
+import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
+import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.CargoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class CandidatoControle {
@@ -34,10 +37,14 @@ public class CandidatoControle {
     }
 
     @RequestMapping("candidato-pagina-inicial")
-    public String inicioCandidato( @SessionAttribute("candidato") Candidato candidato, Model model ) {
-
+    public String inicioCandidato( Model model, HttpSession sessao ) {
         //model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
-        model.addAttribute( "ofertas", ofertasRepositorio.buscarOfertas() );
+        List<Oferta> ofertas = ofertasRepositorio.buscarOfertas();
+        ofertas.removeIf(oferta -> oferta.hasCandidato((Candidato) sessao.getAttribute("candidato")));
+        model.addAttribute("ofertas", ofertas);
+
+        model.addAttribute("cargos", cargoRepositorio.buscarTodosCargos());
+
         return "candidato/PaginaCandidato";
     }
 
@@ -49,14 +56,33 @@ public class CandidatoControle {
     }
 
     @Transactional
+    @RequestMapping(value = "inscrever", method = RequestMethod.GET)
+    public String inscreverCargo( @SessionAttribute("candidato") Candidato candidato, @ModelAttribute("id") int id, Model model ) {
+        Oferta oferta = ofertasRepositorio.getOferta(id);
+        oferta.addCandidato(candidato);
+        ofertasRepositorio.update(oferta);
+        model.addAttribute("msg", "sucesso");
+
+        return "redirect:candidato-pagina-inicial";
+    }
+
+    @Transactional
+    @RequestMapping(value = "adicionarExperiencia", method = RequestMethod.POST)
+    public String adicionarExperiencia( @SessionAttribute("candidato") Candidato candidato, @ModelAttribute("id") int id, Model model ) {
+        Cargo cargo = cargoRepositorio.buscarCargoPorId(id);
+        candidato.addExperiencia(cargo);
+        repositorio.update(candidato);
+        model.addAttribute("msg", "sucesso");
+
+        return "redirect:candidato-pagina-inicial";
+    }
+
+    @Transactional
     @RequestMapping(value = "cadastrarCandidato", method = RequestMethod.POST)
     public String cadastrar( Candidato candidato, Model model ) {
-        if(repositorio.cadastrar( candidato )) {
-            model.addAttribute("candidato", candidato);
-            model.addAttribute("msg", "sucesso");
-        } else {
-            model.addAttribute("msg", "erro");
-        }
+        repositorio.cadastrar( candidato );
+        model.addAttribute("msg", "sucesso");
+
         return "redirect:loginCandidato";
     }
 }
