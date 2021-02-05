@@ -12,6 +12,9 @@ public class EmpresaRepositorio {
     @PersistenceContext
     private EntityManager manager;
 
+    public EmpresaRepositorio() {
+    }
+
     public EmpresaRepositorio(EntityManager manager) {
         this.manager = manager;
     }

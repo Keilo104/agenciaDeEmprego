@@ -18,9 +18,9 @@ public class TesteInsertOferta {
         Empresa empresa = empresaRepositorio.getEmpresa(12);
 
         CargoRepositorio cargoRepositorio = new CargoRepositorio(manager);
-        Cargo cargo = cargoRepositorio.getCargo(12);
+        Cargo cargo = cargoRepositorio.buscarCargoPorCodigo(12);
 
-        Oferta oferta = new Oferta(123,cargo,empresa,213123,12);
+        Oferta oferta = new Oferta("123",cargo,empresa,213123,12);
 
         manager.getTransaction().begin();
         manager.persist(oferta);

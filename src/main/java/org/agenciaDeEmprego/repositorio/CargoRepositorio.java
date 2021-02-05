@@ -3,6 +3,7 @@ package org.agenciaDeEmprego.repositorio;
 import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,11 +14,19 @@ public class CargoRepositorio {
     @PersistenceContext
     private EntityManager manager;
 
-    public void cadastrar( Cargo cargo ) {
+    public CargoRepositorio() {
+    }
+
+    @Transactional
+    public void cadastrar(Cargo cargo ) {
         manager.persist( cargo );
     }
 
-    public Cargo buscarCargoPorCodigo( int cargoCodigo ) {
+    public CargoRepositorio(EntityManager manager) {
+        this.manager = manager;
+    }
+
+    public Cargo buscarCargoPorCodigo(int cargoCodigo ) {
         Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.codigo = ?1" );
         query.setParameter( 1, cargoCodigo );
         try {

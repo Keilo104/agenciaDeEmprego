@@ -3,6 +3,7 @@ package org.agenciaDeEmprego.controle;
 import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
+import org.agenciaDeEmprego.repositorio.CargoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
 import org.agenciaDeEmprego.repositorio.OfertaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class CandidatoControle {
     }
 
     @RequestMapping("candidato-pagina-inicial")
-    @Transactional
-    public String inicioEmpresa( @SessionAttribute("candidato") Candidato candidato, Model model ) {
-        model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
+    public String inicioCandidato( @SessionAttribute("candidato") Candidato candidato, Model model ) {
+
+        //model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
         model.addAttribute( "ofertas", ofertasRepositorio.buscarOfertas() );
         return "candidato/PaginaCandidato";
     }

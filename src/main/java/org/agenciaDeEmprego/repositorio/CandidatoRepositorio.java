@@ -16,6 +16,9 @@ public class CandidatoRepositorio {
 	@PersistenceContext
 	private EntityManager manager;
 
+	public CandidatoRepositorio() {
+	}
+
 	public CandidatoRepositorio(EntityManager manager) {
 		this.manager = manager;
 	}

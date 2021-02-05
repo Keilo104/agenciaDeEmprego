@@ -38,11 +38,11 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarCandidato", method = RequestMethod.POST)
 	public String autenticar( Candidato candidato, HttpSession sessao ) {
 		if ( repositorioCandidato.autenticarCandidato( candidato ) ) {
-			sessao.setAttribute( "candidato", candidato );
+			sessao.setAttribute( "candidato", repositorioCandidato.getCandidatoByLogin(candidato));
 			if(candidato.getLogin().equals("admin")){
 				return "redirect:admin-pagina-inicial";
 			}
-			if ( candidato instanceof Candidato ) {
+			else {
 				return "redirect:candidato-pagina-inicial";
 			}
 		}
