@@ -16,7 +16,7 @@
 
     <body>
         <div class="container">
-            <h1>Bem vindo, ${sessionScope.candidato.nome}! </h1>
+            <h1>Bem vindo, ${sessionScope.candidato.nome}! | <a href="logout">Sair</a> </h1>
 
             <hr>
             <c:if test="${not empty ofertas}">

@@ -49,6 +49,9 @@
             </c:if>
     
             <a href="excluir-oferta&numero=${oferta.id}" class="btn btn-danger"> Excluir Oferta </a>
+            <a href="empresa-pagina-inicial" class="btn btn-danger"> Voltar </a>
         </div>
+
+        
     </body>
 </html>

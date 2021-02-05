@@ -16,7 +16,7 @@
     
     <body>
         <div class="container">
-            <h1> Bem vindo, ${sessionScope.empresa.nome} </h1>
+            <h1> Bem vindo, ${sessionScope.empresa.nome} | <a href="loginEmpresa">Sair</a> </h1>
         
             <c:if test="${not empty ofertas}">
                 <h2>Ofertas cadastradas</h2>

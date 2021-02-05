@@ -37,12 +37,6 @@ public class CargoControle {
         return "admin/Admin";
     }
 
-    @RequestMapping("detalhes-cargo")
-    public String buscarCargo( int numero ) {
-        repositorio.buscarCargoPorCodigo( numero );
-        return "empresa/CadastrarCargo";
-    }
-
     @Transactional
     @RequestMapping("excluir-cargo")
     public String excluirCargo(int codigo, Model model) {

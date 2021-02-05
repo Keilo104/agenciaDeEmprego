@@ -17,11 +17,11 @@ public class OfertaRepositorio {
 	}
 
 	public void cadastrar(Oferta oferta) {
-		manager.persist(oferta);
+		manager.merge(oferta);
 	}
 
 	public void update(Oferta oferta) {
-		manager.persist(oferta);
+		manager.merge(oferta);
 	}
 	
 	public Oferta getOferta(int codigo) {
