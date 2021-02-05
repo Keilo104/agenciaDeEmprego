@@ -34,6 +34,16 @@ public class CandidatoRepositorio {
 		}
 	}
 
+	public boolean update(Candidato candidato) {
+		try {
+			manager.persist(candidato);
+			manager.flush();
+			return true;
+		} catch(EntityExistsException e) {
+			return false;
+		}
+	}
+
 	public boolean autenticarCandidato(Candidato usuario) {
 		Query query = manager.createQuery("select u from Candidato u where u.login = ?1 and u.senha = ?2");
 		query.setParameter(1, usuario.getLogin()).setParameter(2, usuario.getSenha());

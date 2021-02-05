@@ -36,6 +36,16 @@ public class CargoRepositorio {
         }
     }
 
+    public Cargo buscarCargoPorId(int cargoCodigo ) {
+        Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.id = ?1" );
+        query.setParameter( 1, cargoCodigo );
+        try {
+            return ( Cargo ) query.getSingleResult();
+        } catch ( NoResultException e ) {
+            return null;
+        }
+    }
+
     public Cargo buscarCargo( Cargo cargo ) {
         return manager.find( Cargo.class, cargo );
     }

@@ -1,6 +1,7 @@
 package org.agenciaDeEmprego.controle;
 
 import org.agenciaDeEmprego.modelo.Candidato;
+import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
@@ -39,10 +40,11 @@ public class CandidatoControle {
     public String inicioCandidato( Model model, HttpSession sessao ) {
         //model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
         List<Oferta> ofertas = ofertasRepositorio.buscarOfertas();
-
         ofertas.removeIf(oferta -> oferta.hasCandidato((Candidato) sessao.getAttribute("candidato")));
+        model.addAttribute("ofertas", ofertas);
 
-        model.addAttribute( "ofertas");
+        model.addAttribute("cargos", cargoRepositorio.buscarTodosCargos());
+
         return "candidato/PaginaCandidato";
     }
 
@@ -59,6 +61,17 @@ public class CandidatoControle {
         Oferta oferta = ofertasRepositorio.getOferta(id);
         oferta.addCandidato(candidato);
         ofertasRepositorio.update(oferta);
+        model.addAttribute("msg", "sucesso");
+
+        return "redirect:candidato-pagina-inicial";
+    }
+
+    @Transactional
+    @RequestMapping(value = "adicionarExperiencia", method = RequestMethod.POST)
+    public String adicionarExperiencia( @SessionAttribute("candidato") Candidato candidato, @ModelAttribute("id") int id, Model model ) {
+        Cargo cargo = cargoRepositorio.buscarCargoPorId(id);
+        candidato.addExperiencia(cargo);
+        repositorio.update(candidato);
         model.addAttribute("msg", "sucesso");
 
         return "redirect:candidato-pagina-inicial";

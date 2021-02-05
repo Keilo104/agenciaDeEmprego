@@ -86,6 +86,10 @@ public class Candidato extends Usuario {
 		this.experiencia = experiencia;
 	}
 
+	public void addExperiencia (Cargo cargo) {
+		experiencia.add(cargo);
+	}
+
 	@Override
 	public String toString() {
 		return "Candidato{" +
