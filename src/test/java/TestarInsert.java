@@ -14,6 +14,8 @@ public class TestarInsert {
         Cargo cargo2 = new Cargo(2, "QA", "Verifica coisas legais");
         Cargo cargo3 = new Cargo(3, "PO", "Fala com gente nem tanto legais");
 
+
+
         manager.getTransaction().begin();
 
         manager.persist( cargo2 );

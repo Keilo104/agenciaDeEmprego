@@ -16,9 +16,9 @@
     
     <body>
         <div class="container">
-            <h1> ${requestScope.oferta.nome} </h1>
+            <h1> ${sessionScope.oferta.nome} </h1>
             
-            <c:if test="${not empty requestScope.oferta.candidatos}">
+            <c:if test="${not empty oferta.candidatos}">
                 <h2>Candidatos para a vaga corrente</h2>
                 <table class="table">
                     <thead>
@@ -45,7 +45,7 @@
                 </table>
             </c:if>
             
-            <c:if test="${empty oferta}">
+            <c:if test="${empty oferta.candidatos}">
                 <h2>Não há candidatos cadastrados para esta vaga.</h2>
             </c:if>
     
