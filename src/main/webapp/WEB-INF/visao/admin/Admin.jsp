@@ -52,6 +52,7 @@
                 </table>
             </c:if>
             <hr>
+
             <h2>Cadastre um novo cargo</h2>
             <form method="POST" action="cadastrar-cargo" id="cadCargo">
                 <div class="row">
