@@ -74,6 +74,7 @@
             </div>
             <hr>
 
+
             <form method="POST" action="adicionarExperiencia">
             <h3>Adicionar nova Experiência</h3>
             <select class="form-control" id="cargos" name="id">
