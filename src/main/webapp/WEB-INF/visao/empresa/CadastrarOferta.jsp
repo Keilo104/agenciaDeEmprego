@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
@@ -27,11 +28,11 @@
                     <label for="cargos">Cargo</label>
                     <select class="form-control" id="cargos" name="cargo">
                         <c:forEach var="cargo" items="${requestScope.cargos}">
-                            <option value="${cargo.codigo}"> ${cargo.nome} </option>
+                            <option value=1> ${cargo.nome} </option>
                         </c:forEach>
                     </select>
                 </div>
-    
+                
                 <div class="form-group">
                     <label class="form-check-label" for="cadastroSalario">Salário</label>
                     <input class="form-control" id="cadastroSalario" type="text" placeholder="Salário" name="salario">

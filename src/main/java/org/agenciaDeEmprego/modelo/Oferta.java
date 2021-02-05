@@ -44,6 +44,13 @@ public class Oferta {
         this.horas = horas;
     }
 
+    public Oferta( String codigo, float salario, int horas, Cargo cargo ) {
+        this.codigo = codigo;
+        this.salario = salario;
+        this.horas = horas;
+        this.cargo = cargo;
+    }
+
     public String getCodigo() {
         return codigo;
     }
