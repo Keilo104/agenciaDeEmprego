@@ -2,10 +2,7 @@ package org.agenciaDeEmprego.modelo;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -19,11 +16,10 @@ public class Candidato extends Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNasc;
 
-
 	private String codigoCS;
 	private String nomeCS;
 
-	@OneToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Cargo> experiencia;
 
 	public Candidato() {

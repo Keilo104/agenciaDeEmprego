@@ -65,24 +65,24 @@
                 <c:if test="${not empty sessionScope.candidato.experiencia}">
                 <c:forEach var="cargo" items="${sessionScope.candidato.experiencia}">
                     <hr>
-                        <h3>cargo.nome</h3>
-                        <p>cargo.codigo</p>
-                        <p>cargo.descricao</p>
+                        <h3>${cargo.nome}</h3>
+                        <p>${cargo.codigo}</p>
+                        <p>${cargo.descricao}</p>
                     <hr>
                 </c:forEach>
                 </c:if>
             </div>
             <hr>
 
-<%--            <form method="POST" action="adicionarExperiencia">--%>
-<%--            <h3>Adicionar nova Experiência</h3>--%>
-<%--            <select class="form-control" id="cargos" name="id">--%>
-<%--                <c:forEach var="cargo" items="${requestScope.cargos}">--%>
-<%--                    <option value="${cargo.id}"> ${cargo.nome} </option>--%>
-<%--                </c:forEach>--%>
-<%--            </select>--%>
-<%--                <input type="submit" class="btn btn-primary" name="acao" value="Adicionar Experiência">--%>
-<%--            </form>--%>
+            <form method="POST" action="adicionarExperiencia">
+            <h3>Adicionar nova Experiência</h3>
+            <select class="form-control" id="cargos" name="id">
+                <c:forEach var="cargo" items="${requestScope.cargos}">
+                    <option value="${cargo.id}"> ${cargo.nome} </option>
+                </c:forEach>
+            </select>
+                <input type="submit" class="btn btn-primary" name="acao" value="Adicionar Experiência">
+            </form>
         </div>
     </body>
 </html>

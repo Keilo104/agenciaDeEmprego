@@ -83,6 +83,6 @@ public class CandidatoControle {
         repositorio.cadastrar( candidato );
         model.addAttribute("msg", "sucesso");
 
-        return "redirect:loginCandidato";
+        return "LoginCandidato";
     }
 }

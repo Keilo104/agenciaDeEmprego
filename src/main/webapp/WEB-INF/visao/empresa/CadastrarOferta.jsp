@@ -28,7 +28,7 @@
                     <label for="cargos">Cargo</label>
                     <select class="form-control" id="cargos" name="cargo">
                         <c:forEach var="cargo" items="${requestScope.cargos}">
-                            <option value=1> ${cargo.nome} </option>
+                            <option value=${cargo.id}> ${cargo.nome} </option>
                         </c:forEach>
                     </select>
                 </div>
