@@ -2,7 +2,9 @@ package org.agenciaDeEmprego.controle;
 
 import org.agenciaDeEmprego.modelo.Candidato;
 import org.agenciaDeEmprego.modelo.Empresa;
+import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
+import org.agenciaDeEmprego.repositorio.CargoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
 import org.agenciaDeEmprego.repositorio.OfertaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,20 +17,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class CandidatoControle {
     private CandidatoRepositorio repositorio;
+    private OfertaRepositorio ofertaRepositorio;
+    private CargoRepositorio cargoRepositorio;
 
     @Autowired
-    public CandidatoControle( CandidatoRepositorio repositorio ) {
+    public CandidatoControle( CandidatoRepositorio repositorio, OfertaRepositorio ofertaRepositorio, CargoRepositorio cargoRepositorio ) {
         super();
         this.repositorio = repositorio;
+        this.ofertaRepositorio = ofertaRepositorio;
+        this.cargoRepositorio = cargoRepositorio;
     }
 
     @RequestMapping("candidato-pagina-inicial")
     public String inicioEmpresa( @SessionAttribute("candidato") Candidato candidato, Model model ) {
-        //model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
+        List<Oferta> ofertas = ofertaRepositorio.buscarOfertas();
+        model.addAttribute( "ofertas", ofertas );
+        //List<Cargo> cargos = cargoRepositorio.getCargo()
+        //model.addAttribute( "cargo", cargos );
         return "candidato/PaginaCandidato";
     }
 

@@ -12,10 +12,10 @@ public class Oferta {
     @OneToOne
     Cargo cargo;
 
-    @OneToMany
+    @ManyToMany
     List<Candidato> candidatos;
 
-    @OneToOne
+    @ManyToOne
     Empresa empresa;
 
     private float salario;

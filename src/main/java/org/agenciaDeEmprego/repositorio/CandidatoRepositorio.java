@@ -16,6 +16,10 @@ public class CandidatoRepositorio {
 	@PersistenceContext
 	private EntityManager manager;
 
+	public CandidatoRepositorio(EntityManager manager) {
+		this.manager = manager;
+	}
+
 	public boolean cadastrar(Candidato candidato) {
 		try {
 			manager.persist(candidato);

@@ -12,7 +12,11 @@ public class EmpresaRepositorio {
     @PersistenceContext
     private EntityManager manager;
 
-    public void cadastrar( Empresa empresa ) {
+    public EmpresaRepositorio(EntityManager manager) {
+        this.manager = manager;
+    }
+
+    public void cadastrar(Empresa empresa ) {
         manager.persist( empresa );
     }
 

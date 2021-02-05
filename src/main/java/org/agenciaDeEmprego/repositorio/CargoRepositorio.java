@@ -13,7 +13,11 @@ public class CargoRepositorio {
 
 	@PersistenceContext
 	private EntityManager manager;
-	
+
+	public CargoRepositorio(EntityManager manager) {
+		this.manager = manager;
+	}
+
 	public void cadastrar(Cargo cargo) {
 		manager.persist(cargo);
 	}
@@ -27,4 +31,5 @@ public class CargoRepositorio {
 			return null;
 		}
 	}
+
 }
