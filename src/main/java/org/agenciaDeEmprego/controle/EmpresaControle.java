@@ -1,6 +1,7 @@
 package org.agenciaDeEmprego.controle;
 
 import org.agenciaDeEmprego.modelo.Empresa;
+import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
 import org.agenciaDeEmprego.repositorio.OfertaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class EmpresaControle {
@@ -28,7 +30,10 @@ public class EmpresaControle {
 
     @RequestMapping("empresa-pagina-inicial")
     public String inicioEmpresa( @SessionAttribute("empresa") Empresa empresa, Model model ) {
-        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas( empresa.getId() ));
+        List<Oferta> ofertas = ofertaRepositorio.buscarOfertas();
+        ofertas.removeIf(oferta -> oferta.getEmpresa() == empresa);
+
+        model.addAttribute( "ofertas", ofertas);
         return "empresa/PaginaEmpresa";
     }
 
