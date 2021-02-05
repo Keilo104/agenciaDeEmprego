@@ -18,7 +18,8 @@ public class Candidato extends Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNasc;
 
-	private int codigoCS;
+
+	private String codigoCS;
 	private String nomeCS;
 
 	@OneToMany
@@ -27,7 +28,7 @@ public class Candidato extends Usuario {
 	public Candidato() {
 	}
 
-	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, int codigoCS, String nomeCS, List<Cargo> experiencia ) {
+	public Candidato( String login, String senha, String cpf, String nome, LocalDate dataNasc, String codigoCS, String nomeCS, List<Cargo> experiencia ) {
 		super( login, senha );
 		this.cpf = cpf;
 		this.nome = nome;
@@ -61,11 +62,11 @@ public class Candidato extends Usuario {
 		this.dataNasc = dataNasc;
 	}
 
-	public int getCodigoCS() {
+	public String getCodigoCS() {
 		return codigoCS;
 	}
 
-	public void setCodigoCS(int codigoCS) {
+	public void setCodigoCS(String codigoCS) {
 		this.codigoCS = codigoCS;
 	}
 
