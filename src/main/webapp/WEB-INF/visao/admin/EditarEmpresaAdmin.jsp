@@ -17,12 +17,12 @@
     <body>
         <div class="container">
             <h1>Edite uma empresa</h1>
-            <form method="POST" action="cadastrar">
+            <form method="POST" action="atualizar-empresa">
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
                             <label class="form-check-label" for="codigo">Código</label>
-                            <input class="form-control" id="codigo" value="${empresa.codigo}" type="text"  name="codigo" />
+                            <input class="form-control" id="codigo" value="${empresa.codigo}" type="text"  name="codigo" readonly/>
                         </div>
                     
                         <div class="form-group">
@@ -33,12 +33,12 @@
                     <div class="col">
                         <div class="form-group">
                             <label class="form-check-label" for="login">Login</label>
-                            <input class="form-control" id="login" value="${empresa.login}" type="text"  name="login"  readonly />
+                            <input class="form-control" id="login" value="${empresa.login}" type="text"  name="login"  />
                         </div>
                     
                         <div class="form-group">
                             <label class="form-check-label" for="senha">Senha</label>
-                            <input class="form-control" id="senha" value="${empresa.senha}" type="password"  name="senha" readonly/>
+                            <input class="form-control" id="senha" value="${empresa.senha}" type="password"  name="senha" />
                         </div>
                     </div>
                 </div>

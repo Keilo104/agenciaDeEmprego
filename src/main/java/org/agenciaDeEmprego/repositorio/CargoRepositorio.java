@@ -53,17 +53,6 @@ public class CargoRepositorio {
         manager.persist( cargo );
     }
 
-//    public List<Cargo> buscarCargos( Empresa empresa ) {
-//        Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.empresa = ?1" );
-//        query.setParameter( 1, empresa.getId() );
-//        try {
-//            return query.getResultList();
-//        } catch ( Exception e ) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//    }
-
     public List<Cargo> buscarTodosCargos() {
         TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class);
         try {
