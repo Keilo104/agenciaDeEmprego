@@ -52,4 +52,14 @@ public class CargoRepositorio {
             return null;
         }
     }
+
+    public List<Cargo> buscarTodosCargos() {
+        TypedQuery<Cargo> query = manager.createQuery( "SELECT c FROM Cargo c", Cargo.class);
+        try {
+            return query.getResultList();
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
