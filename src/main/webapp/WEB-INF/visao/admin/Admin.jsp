@@ -29,7 +29,6 @@
                         <th scope="col">Código</th>
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
-                        <th scope="col">Editar</th>
                         <th scope="col">Excluir</th>
                     </tr>
                     </thead>
@@ -42,11 +41,6 @@
                             <td> ${cargo.codigo} </td>
                             <td> ${cargo.nome} </td>
                             <td> ${cargo.descricao} </td>
-                            <td>
-                                <a href="editar-cargo?codigo=${cargo.codigo}">
-                                    <button type="button" class="btn btn-primary">Editar</button>
-                                </a>
-                            </td>
                             <td>
                                 <a href="excluir-cargo?codigo=${cargo.codigo}">
                                     <button type="button" class="btn btn-danger">Excluir</button>
@@ -73,7 +67,7 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label class="form-check-label" for="descricao">Login</label>
+                            <label class="form-check-label" for="descricao">Descrição</label>
                             <textarea class="form-control" form="cadCargo" id="descricao" type="text"
                                       placeholder="Descrição do cargo" name="descricao"></textarea>
                         </div>
@@ -108,7 +102,7 @@
                             <td> ${empresa.nome} </td>
                             <td> ${empresa.login} </td>
                             <td>
-                                <a href="editar-empresa?codigo=${empresa.login}">
+                                <a href="editar-empresa?codigo=${empresa.codigo}">
                                     <button type="button" class="btn btn-primary">Editar</button>
                                 </a>
                             </td>

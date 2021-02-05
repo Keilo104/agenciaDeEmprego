@@ -42,16 +42,22 @@ public class EmpresaControle {
 
     @Transactional
     @RequestMapping("excluir-empresa")
-    public String excluirEmpresa( Integer codigo ) {
+    public String excluirEmpresa( int codigo, Model model ) {
         Empresa empresa = repositorio.getEmpresa( codigo );
         repositorio.delete( empresa );
-        return "redirect:pagina-inicial";
+        model.addAttribute("empresas", repositorio.getAll());
+        return "admin/Admin";
     }
 
     @RequestMapping("editar-empresa")
     public String editarEmpresa( Integer codigo, Model model ) {
-        Empresa empresa = repositorio.getEmpresa( codigo );
+        Empresa empresa = repositorio.getEmpresaComCodigo( codigo );
         model.addAttribute( "empresa", empresa );
-        return "editarempresaadmin";
+        System.out.println(empresa.toString());
+        return "admin/EditarEmpresaAdmin";
     }
+
+//    public String atualizarEmpresa(){
+//        repositorio.
+//    }
 }
