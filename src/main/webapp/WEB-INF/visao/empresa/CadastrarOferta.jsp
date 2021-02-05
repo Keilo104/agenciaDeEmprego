@@ -16,7 +16,33 @@
     
     <body>
         <div class="container">
-        
+            <h1>Cadastrar oferta</h1>
+            <form method="POST" action="cadastrar-oferta">
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroCodigo">Código</label>
+                    <input class="form-control" id="cadastroCodigo" type="text" placeholder="Código" name="codigo">
+                </div>
+    
+                <div class="form-group">
+                    <label for="cargos">Cargo</label>
+                    <select class="form-control" id="cargos" name="cargo">
+                        <c:forEach var="cargo" items="${requestScope.cargos}">
+                            <option value="${cargo.codigo}"> ${cargo.nome} </option>
+                        </c:forEach>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroSalario">Salário</label>
+                    <input class="form-control" id="cadastroSalario" type="text" placeholder="Salário" name="salario">
+                </div>
+    
+                <div class="form-group">
+                    <label class="form-check-label" for="cadastroHoras">Horas</label>
+                    <input class="form-control" id="cadastroHoras" type="text" placeholder="Horas" name="horas">
+                </div>
+                <input type="submit" class="btn btn-primary" name="acao" value="Cadastrar">
+            </form>
         </div>
     </body>
 </html>

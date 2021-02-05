@@ -11,48 +11,45 @@
         <meta name="date" content="27/01/2021"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <title>P?gina do Candidato</title>
+        <title>Detalhes Oferta</title>
     </head>
     
     <body>
         <div class="container">
-            <h1> Bem vindo, ${sessionScope.empresa.nome} </h1>
-        
-            <c:if test="${not empty ofertas}">
-                <h2>Ofertas cadastradas</h2>
+            <h1> ${sessionScope.oferta.nome} </h1>
+            
+            <c:if test="${not empty oferta.candidatos}">
+                <h2>Candidatos para a vaga corrente</h2>
                 <table class="table">
                     <thead>
                     <tr>
-                        <th scope="col">Código</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col">Salário</th>
-                        <th scope="col">Horas</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Código Curso Superior</th>
+                        <th scope="col">Curso Superior</th>
+                        <th scope="col">Detalhes</th>
                     </tr>
                     </thead>
-        
+                    
                     <tbody>
-                    <c:forEach var="oferta" items="${requestScope.ofertas}">
+                    <c:forEach var="candidato" items="${requestScope.oferta.candidatos}">
                         <tr>
-                            <td> ${oferta.codigo} </td>
-                            <td> ${oferta.cargo} </td>
-                            <td> ${oferta.salario} </td>
-                            <td> ${oferta.horas} </td>
+                            <td> ${candidato.nome} </td>
+                            <td> ${candidato.codigoCS} </td>
+                            <td> ${candidato.nomeCS} </td>
                             <td>
-                                <a href="detalhes-oferta?numero=${oferta.codigo}" class="btn btn-primary"> Detalhes </a>
+                                <a href="detalhes-candidato&numero=${candidato.codigo}" class="btn btn-danger"> Detalhes </a>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-        
-                <a href="pagina-cadastro-oferta" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
-        
-            <c:if test="${empty ofertas}">
-                <h2>Você ainda não possui ofertas de emprego cadastradas</h2>
-                <a href="pagina-cadastro-oferta?numero=${sessionScope.empresa.codigo}" class="btn btn-primary"> Cadastrar Oferta </a>
+            
+            <c:if test="${empty oferta}">
+                <h2>Não há candidatos cadastrados para esta vaga.</h2>
             </c:if>
+    
+            <a href="excluir-oferta&numero=${oferta.codigo}" class="btn btn-danger"> Excluir Oferta </a>
         </div>
-
     </body>
 </html>
