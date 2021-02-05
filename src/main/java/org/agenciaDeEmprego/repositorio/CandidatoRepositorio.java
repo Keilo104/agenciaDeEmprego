@@ -36,7 +36,7 @@ public class CandidatoRepositorio {
 
 	public boolean update(Candidato candidato) {
 		try {
-			manager.persist(candidato);
+			manager.merge(candidato);
 			manager.flush();
 			return true;
 		} catch(EntityExistsException e) {
