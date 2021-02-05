@@ -1,6 +1,5 @@
 package org.agenciaDeEmprego.repositorio;
 
-import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +13,13 @@ public class EmpresaRepositorio {
     @PersistenceContext
     private EntityManager manager;
 
+    public EmpresaRepositorio() {
+    }
+
+    public EmpresaRepositorio(EntityManager manager) {
+        this.manager = manager;
+    }
+
     @Transactional
     public void cadastrar( Empresa empresa ) {
         manager.persist( empresa );
@@ -21,8 +27,18 @@ public class EmpresaRepositorio {
 
     public Empresa getEmpresa( Integer codigo ) {
         try {
-            System.out.println("hello");
             return manager.find( Empresa.class, codigo );
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Empresa getEmpresa( String email ) {
+            Query query = manager.createQuery( "select e from Empresa e WHERE e.login = ?1 ");
+            query.setParameter( 1, email );
+        try {
+            return ( Empresa ) query.getSingleResult();
         } catch ( Exception e ) {
             e.printStackTrace();
             return null;

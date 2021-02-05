@@ -16,6 +16,13 @@ public class CandidatoRepositorio {
 	@PersistenceContext
 	private EntityManager manager;
 
+	public CandidatoRepositorio() {
+	}
+
+	public CandidatoRepositorio(EntityManager manager) {
+		this.manager = manager;
+	}
+
 	public boolean cadastrar(Candidato candidato) {
 		try {
 			manager.persist(candidato);
@@ -42,6 +49,16 @@ public class CandidatoRepositorio {
 			return manager.find( Candidato.class, candidato.getCpf() );
 		} catch ( Exception e ) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public Candidato getCandidatoByLogin(Candidato candidato) {
+		Query query = manager.createQuery("select c from Candidato c where c.login = ?1");
+		query.setParameter(1, candidato.getLogin());
+		try {
+			return (Candidato) query.getSingleResult();
+		} catch (NoResultException e) {
 			return null;
 		}
 	}

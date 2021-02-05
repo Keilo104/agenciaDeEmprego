@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-
 @Controller
 public class CargoControle {
     private CargoRepositorio repositorio;
@@ -52,5 +51,4 @@ public class CargoControle {
         model.addAttribute("empresas", empresaRepositorio.getAll());
         return "admin/Admin";
     }
-
 }

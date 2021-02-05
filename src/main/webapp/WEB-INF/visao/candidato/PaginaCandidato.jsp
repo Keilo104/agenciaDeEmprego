@@ -16,18 +16,17 @@
 
     <body>
         <div class="container">
-            <h1>Bem vindo, ${sessionScope.candidato.nome} </h1>
-            
+            <h1>Bem vindo, ${sessionScope.candidato.nome}! </h1>
+
+            <hr>
             <c:if test="${not empty ofertas}">
             <p>Abaixo encontram-se as empresas e ofertas </p>
                 <table class="table">
                     <thead>
                     <tr>
+                        <th scope="col">Código</th>
                         <th scope="col">Empresa</th>
                         <th scope="col">Cargo</th>
-                        <th scope="col">Salário</th>
-                        <th scope="col">Carga horária</th>
-                        <th scope="col">Inscrever-se</th>
                     </tr>
                     </thead>
                     
@@ -39,13 +38,36 @@
                             <td> ${oferta.salario} </td>
                             <td> ${oferta.horas} </td>
                             <td>
-                                <a href="?${oferta.id}" class="btn btn-danger">Enviar currículo</a>
+                                <a href="inscrever" class="btn btn-danger">Inscrever-se</a>
                             </td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </c:if>
+            <c:if test="${empty ofertas}">
+                Nenhuma empresa cadastrou ofertas ainda.
+            </c:if>
+
+            <div class="candidatoCurriculo">
+                <hr>
+                <h1>Seu curriculo</h1>
+                <p>Nome: ${sessionScope.candidato.nome} </p>
+
+                <h3>Experiencias:</h3>
+                <c:if test="${empty cargos}">
+                    Nenhuma experiencia cadastrada
+                </c:if>
+                <c:if test="${not empty cargos}">
+                <c:forEach var="cargo" items="${requestScope.cargos}">
+                    <hr>
+                        <h3>cargo.nome</h3>
+                        <p>cargo.codigo</p>
+                        <p>cargo.descricao</p>
+                    <hr>
+                </c:forEach>
+                </c:if>
+            </div>
         </div>
     </body>
 </html>

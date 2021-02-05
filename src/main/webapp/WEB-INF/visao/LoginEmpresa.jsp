@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -15,11 +16,9 @@
 
 <body>
 <div class="container">
-<%--    <c:if test="${not empty msg}">--%>
-<%--        <c:if test="${msg='sucesso'}">--%>
-<%--            <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>--%>
-<%--        </c:if>--%>
-<%--    </c:if>--%>
+    <c:if test="${not empty msg and msg == 'sucesso'}">
+        <div style="margin-top: 20px" class="alert alert-success">Cadastro realizado com sucesso!</div>
+    </c:if>
     <div class="row mt-5">
         <div class="col-6">
             <h1>Faça Login</h1>

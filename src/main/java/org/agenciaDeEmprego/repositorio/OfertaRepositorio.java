@@ -12,7 +12,10 @@ import java.util.List;
 public class OfertaRepositorio {
 	@PersistenceContext
 	private EntityManager manager;
-	
+
+	public OfertaRepositorio() {
+	}
+
 	public void cadastrar(Oferta oferta) {
 		manager.persist(oferta);
 	}

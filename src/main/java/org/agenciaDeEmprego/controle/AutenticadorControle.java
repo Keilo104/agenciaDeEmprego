@@ -6,7 +6,6 @@ import org.agenciaDeEmprego.repositorio.CandidatoRepositorio;
 import org.agenciaDeEmprego.repositorio.EmpresaRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,6 +16,7 @@ public class AutenticadorControle {
 
 	private CandidatoRepositorio repositorioCandidato;
 	private EmpresaRepositorio repositorioEmpresa;
+
 
 	@Autowired //injeção de dependência
 	public AutenticadorControle(CandidatoRepositorio repositorio, EmpresaRepositorio repositorioEmpresa) {
@@ -38,11 +38,11 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarCandidato", method = RequestMethod.POST)
 	public String autenticar( Candidato candidato, HttpSession sessao ) {
 		if ( repositorioCandidato.autenticarCandidato( candidato ) ) {
-			sessao.setAttribute( "candidato", candidato );
+			sessao.setAttribute( "candidato", repositorioCandidato.getCandidatoByLogin(candidato));
 			if(candidato.getLogin().equals("admin")){
 				return "redirect:admin-pagina-inicial";
 			}
-			if ( candidato instanceof Candidato ) {
+			else {
 				return "redirect:candidato-pagina-inicial";
 			}
 		}
@@ -52,10 +52,8 @@ public class AutenticadorControle {
 	@RequestMapping(value = "autenticarEmpresa", method = RequestMethod.POST)
 	public String autenticar( Empresa empresa, HttpSession sessao ) {
 		if ( repositorioEmpresa.autenticarEmpresa( empresa ) ) {
-			sessao.setAttribute( "empresa", empresa );
-			if ( empresa instanceof Empresa ) {
-				return "redirect:empresa-pagina-inicial";
-			}
+			 sessao.setAttribute( "empresa", repositorioEmpresa.getEmpresa( empresa.getLogin() ) );
+			return "redirect:empresa-pagina-inicial";
 		}
 		return "LoginEmpresa";
 	}

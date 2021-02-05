@@ -34,9 +34,9 @@ public class CandidatoControle {
     }
 
     @RequestMapping("candidato-pagina-inicial")
-    @Transactional
-    public String inicioEmpresa( @SessionAttribute("candidato") Candidato candidato, Model model ) {
-        model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
+    public String inicioCandidato( @SessionAttribute("candidato") Candidato candidato, Model model ) {
+
+        //model.addAttribute( "candidato", repositorio.getCandidato( candidato ) );
         model.addAttribute( "ofertas", ofertasRepositorio.buscarOfertas() );
         return "candidato/PaginaCandidato";
     }
@@ -46,5 +46,17 @@ public class CandidatoControle {
         model.addAttribute("empresas", empresaRepositorio.getAll());
         model.addAttribute("cargos", cargoRepositorio.buscarTodosCargos());
         return "admin/Admin";
+    }
+
+    @Transactional
+    @RequestMapping(value = "cadastrarCandidato", method = RequestMethod.POST)
+    public String cadastrar( Candidato candidato, Model model ) {
+        if(repositorio.cadastrar( candidato )) {
+            model.addAttribute("candidato", candidato);
+            model.addAttribute("msg", "sucesso");
+        } else {
+            model.addAttribute("msg", "erro");
+        }
+        return "redirect:loginCandidato";
     }
 }

@@ -14,12 +14,19 @@ public class CargoRepositorio {
     @PersistenceContext
     private EntityManager manager;
 
+    public CargoRepositorio() {
+    }
+
     @Transactional
-    public void cadastrar( Cargo cargo ) {
+    public void cadastrar(Cargo cargo ) {
         manager.persist( cargo );
     }
 
-    public Cargo buscarCargoPorCodigo( int cargoCodigo ) {
+    public CargoRepositorio(EntityManager manager) {
+        this.manager = manager;
+    }
+
+    public Cargo buscarCargoPorCodigo(int cargoCodigo ) {
         Query query = manager.createQuery( "SELECT c FROM Cargo c WHERE c.codigo = ?1" );
         query.setParameter( 1, cargoCodigo );
         try {

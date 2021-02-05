@@ -47,10 +47,10 @@
         
                 <a href="pagina-cadastro-oferta" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
-    
+        
             <c:if test="${empty ofertas}">
                 <h2>Você ainda não possui ofertas de emprego cadastradas</h2>
-                <a href="pagina-cadastro-oferta?numero=${sessionScope.empresa.nome}" class="btn btn-primary"> Cadastrar Oferta </a>
+                <a href="pagina-cadastro-oferta?numero=${sessionScope.empresa.codigo}" class="btn btn-primary"> Cadastrar Oferta </a>
             </c:if>
         </div>
 
