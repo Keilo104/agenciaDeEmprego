@@ -34,23 +34,11 @@ public class OfertaRepositorio {
 		}
 	}
 
-	public Oferta buscarCandidatosPelaOferta(int codigo) {
-		Query query = manager.createQuery( "select * from Ofer oc \n" +
-											"join candidato c on c.id = oc.candidatos_id\n" +
-											"join oferta o on oc.oferta_id = o.id" );
-		query.setParameter( 1, codigo );
+	public List<Oferta> buscarOfertas( int intEmpresa ) {
+		TypedQuery<Oferta> query = manager.createQuery( "SELECT o FROM Oferta o WHERE o.empresa = ?1", Oferta.class );
+		query.setParameter( 1, intEmpresa );
 		try {
-			return ( Oferta ) query.getSingleResult();
-		} catch ( NoResultException e ) {
-			return null;
-		}
-	}
-
-	public Oferta buscarOfertas( int codigoEmpresa ) {
-		Query query = manager.createQuery( "SELECT o FROM Oferta o WHERE o.empresa = ?1" );
-		query.setParameter( 1, codigoEmpresa );
-		try {
-			return ( Oferta ) query.getResultList();
+			return query.getResultList();
 		} catch ( NoResultException e ) {
 			return null;
 		}

@@ -109,14 +109,6 @@ public class Oferta {
         this.candidatos.add(candidato);
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public boolean hasCandidato(Candidato candidato) {
         return candidatos.contains(candidato);
     }
