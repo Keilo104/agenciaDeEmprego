@@ -27,8 +27,8 @@ public class EmpresaControle {
     }
 
     @RequestMapping("empresa-pagina-inicial")
-    public String inicioEmpresa( Model model, HttpSession sessao ) {
-        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas() );
+    public String inicioEmpresa( Empresa empresa, Model model, HttpSession sessao ) {
+        model.addAttribute( "ofertas", ofertaRepositorio.buscarOfertas(empresa.getCodigo()) );
         return "empresa/PaginaEmpresa";
     }
 

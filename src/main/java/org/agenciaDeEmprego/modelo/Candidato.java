@@ -4,6 +4,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Candidato extends Usuario {
 	private int codigoCS;
 	private String nomeCS;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<Cargo> experiencia;
 
 	public Candidato() {

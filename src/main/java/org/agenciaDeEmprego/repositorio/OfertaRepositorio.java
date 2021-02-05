@@ -19,9 +19,13 @@ public class OfertaRepositorio {
 	public void cadastrar(Oferta oferta) {
 		manager.persist(oferta);
 	}
+
+	public void update(Oferta oferta) {
+		manager.persist(oferta);
+	}
 	
 	public Oferta getOferta(int codigo) {
-		Query query = manager.createQuery("select u from Oferta u where u.codigo = ?1");
+		Query query = manager.createQuery("select u from Oferta u where u.id = ?1");
 		query.setParameter(1, codigo);
 		try {
 			return (Oferta) query.getSingleResult();

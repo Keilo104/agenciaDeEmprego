@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.transaction.Transactional;
 
 import org.agenciaDeEmprego.modelo.Candidato;
+import org.agenciaDeEmprego.modelo.Oferta;
 import org.agenciaDeEmprego.modelo.Usuario;
 import org.hibernate.JDBCException;
 import org.hibernate.exception.ConstraintViolationException;
