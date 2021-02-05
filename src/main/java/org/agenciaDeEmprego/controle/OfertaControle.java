@@ -35,7 +35,7 @@ public class OfertaControle {
 
     @RequestMapping("pagina-cadastro-oferta")
     public String visaoCadastroOferta( int numero, Model model ) {
-        model.addAttribute( "cargos", cargoRepositorio.buscarCargos() );
+        model.addAttribute( "cargos", cargoRepositorio.buscarTodosCargos() );
         return "empresa/CadastrarOferta";
     }
 

@@ -1,6 +1,5 @@
 package org.agenciaDeEmprego.repositorio;
 
-import org.agenciaDeEmprego.modelo.Cargo;
 import org.agenciaDeEmprego.modelo.Empresa;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +20,6 @@ public class EmpresaRepositorio {
         this.manager = manager;
     }
 
-    public void cadastrar(Empresa empresa ) {
     @Transactional
     public void cadastrar( Empresa empresa ) {
         manager.persist( empresa );
