@@ -26,7 +26,6 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Código Curso Superior</th>
                         <th scope="col">Curso Superior</th>
-                        <th scope="col">Detalhes</th>
                     </tr>
                     </thead>
                     
@@ -35,9 +34,9 @@
                         <tr>
                             <td> ${candidato.nome} </td>
                             <td> ${candidato.codigoCS} </td>
-                            <td> ${candidato.nomeCS} </td>
                             <td>
-                                <a href="detalhes-candidato&numero=${candidato.codigo}" class="btn btn-danger"> Detalhes </a>
+                                <c:if test="${ not empty candidato.nomeCS}"> ${candidato.nomeCS} </c:if>
+                                <c:if test="${empty candidato.nomeCS}"> N/A </c:if>
                             </td>
                         </tr>
                     </c:forEach>
